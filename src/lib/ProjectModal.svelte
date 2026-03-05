@@ -63,7 +63,7 @@
       links: [
         { text: 'documentation on Github', url: 'https://github.com/micah1701/Node1/' }
       ]
-    
+    }
   };
 
   const project = projects[projectId];
@@ -101,7 +101,7 @@
             {#if i > 0}, {/if}
             in the <a href={link.url} target="_blank">{link.text}</a>
           {/each}.
-          }
+          
         </p>
       {/if}
     </div>
