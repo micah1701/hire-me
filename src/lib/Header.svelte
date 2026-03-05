@@ -26,6 +26,7 @@
       <ul class="nav-links" class:active={menuOpen}>
         <li><a href="#work" on:click={(e) => scrollToSection(e, 'work')}>Work</a></li>
         <li><a href="#about" on:click={(e) => scrollToSection(e, 'about')}>About</a></li>
+        <li><a href="#resume" on:click={(e) => scrollToSection(e, 'resume')}>Resume</a></li>
         <li><a href="#contact" on:click={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
       </ul>
     </nav>

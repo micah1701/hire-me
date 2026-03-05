@@ -3,6 +3,7 @@
   import Hero from './lib/Hero.svelte';
   import Work from './lib/Work.svelte';
   import About from './lib/About.svelte';
+  import Resume from './lib/Resume.svelte';
   import Contact from './lib/Contact.svelte';
   import Footer from './lib/Footer.svelte';
   import ProjectModal from './lib/ProjectModal.svelte';
@@ -22,6 +23,7 @@
 <Hero />
 <Work on:openModal={(e) => openModal(e.detail)} />
 <About />
+<Resume />
 <Contact />
 <Footer />
 
