@@ -10,7 +10,15 @@
     menuOpen = false;
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const header = document.querySelector('.site-header') as HTMLElement;
+      const headerHeight = header ? header.offsetHeight : 0;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight - 20;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   }
 </script>
