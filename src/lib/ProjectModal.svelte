@@ -101,6 +101,7 @@
             {#if i > 0}, {/if}
             in the <a href={link.url} target="_blank">{link.text}</a>
           {/each}.
+          }
         </p>
       {/if}
     </div>
