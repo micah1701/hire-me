@@ -22,9 +22,10 @@
     </a>
   </div>
 
-  <div>
+  <p>
     <img src="/discord_micah.png" style="max-width: 256px">
-  </div>
+  </p>
+  
 </section>
 
 <style>
