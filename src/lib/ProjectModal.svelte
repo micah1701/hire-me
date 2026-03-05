@@ -23,11 +23,11 @@
         'Installation is as easy as dropping one lightweight script tag onto your site. For developers and small teams who value autonomy and simplicity, Ad‑Hoc Analytics is analytics done right: fast, ethical, and maintenance‑free.'
       ],
       images: [
-        'img/ad-hoc-analytics.png',
-        'img/ad-hoc-analytics-session-timeline.png',
-        'img/ad-hoc-analytics-manage-site-1-code.png',
-        'img/ad-hoc-analytics-manage-site-3-delete.png',
-        'img/ad-hoc-analytics-link-activity.png'
+        '/img/ad-hoc-analytics.png',
+        '/img/ad-hoc-analytics-session-timeline.png',
+        '/img/ad-hoc-analytics-manage-site-1-code.png',
+        '/img/ad-hoc-analytics-manage-site-3-delete.png',
+        '/img/ad-hoc-analytics-link-activity.png'
       ],
       links: [
         { text: 'Github Readme file', url: 'https://github.com/micah1701/ad-hoc-analytics/blob/main/README.md' }
@@ -42,10 +42,10 @@
         'Designed with the same pragmatic mindset behind the entire Creative Ad‑Hoc Solutions suite, this project pairs blockchain security with web‑app simplicity: fast to deploy, easy to maintain, and aligned with the principles of open, user‑owned technology.'
       ],
       images: [
-        'img/hodl-dashboard.png',
-        'img/hodl-marketplace.png',
-        'img/hodl-offer-long.png',
-        'img/hodl-homepage.png'
+        '/img/hodl-dashboard.png',
+        '/img/hodl-marketplace.png',
+        '/img/hodl-offer-long.png',
+        '/img/hodl-homepage.png'
       ]
     },
     api: {
@@ -56,9 +56,9 @@
         'Where many enterprise frameworks overwhelm developers with features and configuration, Node1 API Framework delivers an elegant, security‑first baseline. It\'s the backend architecture you can actually understand — designed for developers who value control, clarity, and creative problem‑solving.'
       ],
       images: [
-        'img/node1-postman-get-token.png',
-        'img/node1-github-sample.png',
-        'img/node1-postman-view-log.png'
+        '/img/node1-postman-get-token.png',
+        '/img/node1-github-sample.png',
+        '/img/node1-postman-view-log.png'
       ],
       links: [
         { text: 'documentation on Github', url: 'https://github.com/micah1701/Node1/' }

@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="about-photo">
-      <img src="headshot.png" alt="Photo of me" />
+      <img src="/headshot.png" alt="Photo of me" />
     </div>
   </div>
 </section>
