@@ -124,8 +124,8 @@
 </script>
 
 <section id="resume" class="resume">
-
-  <p class="pdf-download">
+  <div class="resume-container">
+    <p class="pdf-download">
       <a href="/micah_murray.pdf" download class="download-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -135,10 +135,7 @@
         </svg>
         Download PDF
       </a>
-  </p>
-  
-  <div class="resume-container">
-
+    </p>
     <div class="resume-header">
       <div class="resume-header-left">
         <h1>Micah Murray</h1>
@@ -146,11 +143,10 @@
         <p class="methodology">Learn the Process → Find the Bottleneck → Have Big Ideas → PoC → MVP</p>
       </div>
       <div class="resume-header-right">
-        <p>130 Westmoreland Ave<br>Longmeadow, Massachusetts<br>860.205.0687</p>
+        <p>130 Westmoreland Ave<br>Longmeadow, Massachusetts
         <p>
           <a href="https://linkedin.com/in/micahmurray" target="_blank">linkedin.com/in/micahmurray</a><br>
           <a href="https://github.com/micah1701" target="_blank">github.com/micah1701</a><br>
-          <a href="mailto:micah.murray@gmail.com">micah.murray@gmail.com</a>
         </p>
       </div>
     </div>
