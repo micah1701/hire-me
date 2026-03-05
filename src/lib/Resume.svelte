@@ -125,6 +125,18 @@
 
 <section id="resume" class="resume">
   <div class="resume-container">
+    <p class="pdf-download">
+      <a href="/micah_murray.pdf" download class="download-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="12" y1="18" x2="12" y2="12"></line>
+          <polyline points="9 15 12 18 15 15"></polyline>
+        </svg>
+        Download PDF
+      </a>
+    </p>
+
     <div class="resume-header">
       <div class="resume-header-left">
         <h1>Micah Murray</h1>
@@ -137,17 +149,6 @@
           <a href="https://linkedin.com/in/micahmurray" target="_blank">linkedin.com/in/micahmurray</a><br>
           <a href="https://github.com/micah1701" target="_blank">github.com/micah1701</a><br>
           <a href="mailto:micah.murray@gmail.com">micah.murray@gmail.com</a>
-        </p>
-        <p class="pdf-download">
-          <a href="/micah_murray.pdf" download class="download-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="12" y1="18" x2="12" y2="12"></line>
-              <polyline points="9 15 12 18 15 15"></polyline>
-            </svg>
-            Download PDF
-          </a>
         </p>
       </div>
     </div>
@@ -269,27 +270,22 @@
   }
 
   .pdf-download {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
+    margin-bottom: 1.5rem;
   }
 
   .download-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: white;
-    border-radius: 4px;
+    color: var(--accent);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: background 0.2s ease;
+    transition: opacity 0.2s ease;
   }
 
   .download-link:hover {
-    background: var(--accent-dark, #0056b3);
-    text-decoration: none;
+    opacity: 0.7;
+    text-decoration: underline;
   }
 
   .download-link svg {
