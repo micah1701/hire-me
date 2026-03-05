@@ -63,7 +63,7 @@
       links: [
         { text: 'documentation on Github', url: 'https://github.com/micah1701/Node1/' }
       ]
-    }
+    
   };
 
   const project = projects[projectId];
