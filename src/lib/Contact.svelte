@@ -21,6 +21,10 @@
       Discord
     </a>
   </div>
+
+  <div>
+    <img src="/discord_micah.png" style="max-width: 256px">
+  </div>
 </section>
 
 <style>
