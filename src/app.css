@@ -175,6 +175,27 @@ h2 {
   padding: 0 4px;
 }
 
+.tech-stack {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.tech-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tech-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
 .about {
   background: var(--card-bg);
   padding: 4rem 1rem;

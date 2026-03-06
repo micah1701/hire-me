@@ -6,7 +6,7 @@
   export let title: string;
   export let subtitle: string;
   export let description: string;
-  export let showAlgorandLogo: boolean = false;
+  export let techStack: string[] = [];
 
   const dispatch = createEventDispatcher();
 
@@ -23,9 +23,11 @@
       {subtitle}
     </h3>
     <p>{description}</p>
-    {#if showAlgorandLogo}
-      <div class="centered-200">
-        
+    {#if techStack.length > 0}
+      <div class="tech-stack">
+        {#each techStack as tech}
+          <img src="/icons/{tech}.svg" alt={tech} class="tech-icon" title={tech} />
+        {/each}
       </div>
     {/if}
   </div>
