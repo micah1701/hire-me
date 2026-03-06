@@ -33,5 +33,7 @@
   <ProjectModal projectId="hodl" on:close={closeModal} />
 {:else if activeModal === 'api'}
   <ProjectModal projectId="api" on:close={closeModal} />
+{:else if activeModal === 'vision'}
+  <ProjectModal projectId="vision" on:close={closeModal} />
 {/if}
 
