@@ -3,6 +3,7 @@
 
   export let projectId: string;
   export let image: string;
+  export let imgClass: string;
   export let title: string;
   export let subtitle: string;
   export let description: string;
