@@ -17,7 +17,7 @@
   const projects: Record<string, ProjectData> = {
     vision : {
       title: 'Ad-Hoc Vision',
-      tagline: 'Facial Recognition Prototype'
+      tagline: 'Facial Recognition Prototype',
       description: [
         'Ad‑Hoc Vision is an experimental prototype demonstrating a new approach to facial recognition—one centered on privacy, transparency, and modern web technology. Unlike conventional identity systems that rely on cloud‑hosted image analysis, this proof‑of‑concept runs entirely client‑side in the browser. Using GPU‑accelerated landmark detection via MediaPipe FaceLandmarker and face‑api.js, it captures facial geometry as compact 128‑dimensional vector embeddings that are stored securely—never the user’s actual photo.',
         'The prototype operates across six distinct modes, from live capture and recognition to static image and government‑ID scanning. Its design prioritizes liveness challenges (blink, head turn, mouth movement) to resist spoofing and ensure real‑person interaction. When scanning IDs, the app leverages OpenAI APIs to clean up card images, normalize lighting, and run AI‑based OCR, turning complex card visuals into structured, machine‑readable data—entirely within a controlled, user‑consented flow.',
