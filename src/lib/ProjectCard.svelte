@@ -27,7 +27,7 @@
     {#if techStack.length > 0}
       <div class="tech-stack">
         {#each techStack as tech}
-          <img src="/icons/{tech}.svg" alt={tech} class="tech-icon" title={tech} />
+          <img src="/techLogos/{tech}.svg" alt={tech} class="tech-icon" title={tech} />
         {/each}
       </div>
     {/if}
