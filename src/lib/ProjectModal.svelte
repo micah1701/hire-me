@@ -28,7 +28,6 @@
                '/img/face-capture.jpg',
                '/img/face-admin.jpg'
               ],
-      links: [],
     },
     
     analytics: {
