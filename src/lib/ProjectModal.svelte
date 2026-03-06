@@ -24,7 +24,7 @@
         'This demonstration showcases the union of browser‑native computation and ethical data handling. By pairing vector embeddings with direct‑in‑browser processing, it proves that facial recognition doesn’t have to compromise security or privacy. Instead, it can remain transparent and user‑centric—an embodiment of the Creative Ad‑Hoc Solutions philosophy: smart, minimal, practical innovation built around real‑world constraints.'
       ],
       images: ['/img/face-static-rec.png',
-               '/img/license-scan-test.jpg'
+               '/img/face-license-capture.jpg'
               ],
       links: [],
     },
