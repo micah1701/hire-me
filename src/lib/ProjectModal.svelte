@@ -25,7 +25,8 @@
       ],
       images: ['/img/face-static-rec.png',
                '/img/face-license-capture.jpg',
-               '/img/face-capture.jpg'
+               '/img/face-capture.jpg',
+               '/img/face-admin.jpg'
               ],
       links: [],
     },
