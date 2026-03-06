@@ -16,7 +16,7 @@
 </script>
 
 <article class="project" data-project={projectId} on:click={handleClick}>
-  <img src={image} alt="Screenshot of {title}" />
+  <img src={image} class={imgClass} alt="Screenshot of {title}" />
   <div class="project-body">
     <h3>
       <span>{title}</span>
