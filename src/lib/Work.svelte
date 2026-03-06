@@ -17,7 +17,7 @@
       image="/img/ad-hoc-analytics.png"
       imgClass=""
       title="Ad‑Hoc Vision: Facial Recognition Prototype"
-      subtitle="Browser based motion tracking, face matching, license reading."
+      subtitle="Browser based motion tracking, face matching, and photo ID card reader."
       description="A proof‑of‑concept browser‑based facial recognition system built with Svelte, MediaPipe, and face‑api.js. All processing runs locally in the browser using vector embeddings. No raw images stored, while OpenAI‑powered tools handle image cleanup and OCR for ID scanning."
       techStack={['svelte', 'supabase', 'mediapipe']}
       on:click={() => openModal('vision')}
