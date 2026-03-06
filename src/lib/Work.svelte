@@ -26,7 +26,7 @@
     <ProjectCard
       projectId="analytics"
       image="/img/ad-hoc-analytics.png"
-      imgClass=""
+      imgClass="img-contain"
       title="Ad‑Hoc Analytics"
       subtitle="a lightweight, privacy‑focused alternative to big‑tech analytics."
       description="A privacy‑first website analytics app built with React and Supabase. It tracks real‑time visits, top pages, and link activity—without using cookies or invasive tracking—making setup and maintenance refreshingly simple."
