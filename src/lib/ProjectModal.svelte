@@ -23,7 +23,9 @@
         'The prototype operates across six distinct modes, from live capture and recognition to static image and government‑ID scanning. Its design prioritizes liveness challenges (blink, head turn, mouth movement) to resist spoofing and ensure real‑person interaction. When scanning IDs, the app leverages OpenAI APIs to clean up card images, normalize lighting, and run AI‑based OCR, turning complex card visuals into structured, machine‑readable data—entirely within a controlled, user‑consented flow.',
         'This demonstration showcases the union of browser‑native computation and ethical data handling. By pairing vector embeddings with direct‑in‑browser processing, it proves that facial recognition doesn’t have to compromise security or privacy. Instead, it can remain transparent and user‑centric—an embodiment of the Creative Ad‑Hoc Solutions philosophy: smart, minimal, practical innovation built around real‑world constraints.'
       ],
-      images: [],
+      images: ['/img/face-static-rec.png',
+               '/img/license-scan-test.jpg'
+              ],
       links: [],
     },
     
