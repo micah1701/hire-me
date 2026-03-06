@@ -14,7 +14,7 @@
   <div class="project-grid">
     <ProjectCard
       projectId="vision"
-      image="/img/face-license-cpature.jpg"
+      image="/img/face-license-capture.jpg"
       imgClass=""
       title="Ad‑Hoc Vision: Facial Recognition Prototype"
       subtitle="Browser based motion tracking, face matching, and photo ID card reader."
