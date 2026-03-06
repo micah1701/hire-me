@@ -163,6 +163,9 @@ h2 {
   height: 160px;
   object-fit: cover;
 }
+.project > img.img-contain {
+  object-fit: contain;
+}
 .project .project-body {
   padding: 5px;
 }
