@@ -13,6 +13,17 @@
   <h2>Recent Projects</h2>
   <div class="project-grid">
     <ProjectCard
+      projectId="vision"
+      image="/img/ad-hoc-analytics.png"
+      imgClass=""
+      title="Ad‑Hoc Vision: Facial Recognition Prototype"
+      subtitle="Lightweight, privacy‑first facial recognition—proof that computer vision can be secure, ethical, and elegant."
+      description="A proof‑of‑concept browser‑based facial recognition system built with Svelte, MediaPipe, and face‑api.js. All processing runs locally in the browser using vector embeddings. No raw images stored, while OpenAI‑powered tools handle image cleanup and OCR for ID scanning."
+      techStack={['react', 'supabase']}
+      on:click={() => openModal('vision')}
+    />
+    
+    <ProjectCard
       projectId="analytics"
       image="/img/ad-hoc-analytics.png"
       imgClass=""
