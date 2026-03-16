@@ -110,11 +110,10 @@ Developed mission-critical web systems for a 161,000-member national organizatio
 ## 🧾 Contact
 
 **Micah Murray**  
-📍 Longmeadow, MA  
-📞 (860) 205‑0687  
-✉️ [micah.murray@gmail.com](mailto:micah.murray@gmail.com)  
+📍 Longmeadow, MA    
+✉️ [micah.micah@creativeadhocsolutions.com](mailto:micah@creativeadhocsolutions.com)
 🔗 [LinkedIn](https://linkedin.com/in/micahmurray)  
-💻 [GitHub](https://github.com/micah1701)
+💻 [GitHub](https://github.com/micah1701) (you hare here)
 
 ---
 
