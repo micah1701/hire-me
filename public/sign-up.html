@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMS Sign Up | Micah Murray</title>
+  <style>
+    :root {
+      --accent: #3364a0;
+      --text: #212121;
+      --light-text: #555;
+      --bg: #fafafa;
+      --card-bg: #fff;
+      --success: #2e7d32;
+      --error: #c62828;
+      --font: 'Inter', 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .site-header {
+      background: var(--card-bg);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin: 0;
+    }
+
+    h1.logo {
+      font-size: 1.8rem;
+    }
+
+    h1.logo div {
+      font-size: 1.2rem;
+      line-height: .8em;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .nav-links li a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+
+    .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    input[type="tel"],
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: var(--font);
+      transition: border-color 0.3s;
+    }
+
+    input[type="tel"]:focus,
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .consent-box {
+      background: #f5f5f5;
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .consent-box p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .consent-box p.small {
+      font-size: 0.85rem;
+      color: var(--light-text);
+    }
+
+    .consent-box a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .consent-box a:hover {
+      text-decoration: underline;
+    }
+
+    .checkbox-group {
+      margin: 1.5rem 0;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button[type="submit"]:hover:not(:disabled) {
+      background: #2a5280;
+    }
+
+    button[type="submit"]:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #e8f5e9;
+      color: var(--success);
+      border-left: 4px solid var(--success);
+    }
+
+    .message.error {
+      background: #ffebee;
+      color: var(--error);
+      border-left: 4px solid var(--error);
+    }
+
+    .help-text {
+      font-size: 0.85rem;
+      color: var(--light-text);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      h1.logo {
+        font-size: 1.4rem;
+      }
+
+      h1.logo div {
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .nav-links li a {
+        margin-left: 0.75rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- Analytics Tracking Code -->
+  <script>
+    window.ANALYTICS_CONFIG = {
+      trackingId: 'UhryjKTIzzMyxqzk',
+      apiUrl: 'https://gmvshvbfvqujlktpqllf.supabase.co/functions/v1/track'
+    };
+  </script>
+  <script src="https://analytics.ad-hoc.app/analytics.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <h1 class="logo">
+        Micah J. Murray
+        <div>Web Application Software Developer</div>
+      </h1>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="content">
+    <h2>SMS Sign Up</h2>
+
+    <div id="message" class="message"></div>
+
+    <form id="smsSignupForm">
+      <div class="form-group">
+        <label for="name">Name (Optional)</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email (Optional)</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="your.email@example.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Mobile Phone Number <span style="color: #c62828;">*</span></label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          placeholder="(555) 123-4567"
+          pattern="[0-9\s\-\(\)\+]+"
+        />
+        <div class="help-text">Enter your mobile phone number to receive text messages</div>
+      </div>
+
+      <div class="consent-box">
+        <p><strong>SMS Terms and Conditions:</strong></p>
+        <p>By providing your mobile phone number and checking the consent box below, you agree to receive SMS and MMS messages from Micah J. Murray and associated applications.</p>
+        <p class="small"><strong>Message Frequency:</strong> Message frequency varies based on your activity and interactions. You may receive service updates, notifications, and promotional messages.</p>
+        <p class="small"><strong>Message & Data Rates:</strong> Message and data rates may apply. Check with your mobile carrier for details about your messaging plan.</p>
+        <p class="small"><strong>Opt-Out Instructions:</strong> Reply STOP to any message to unsubscribe from SMS messages at any time. Reply HELP for assistance.</p>
+        <p class="small"><strong>Support:</strong> For support, you can reply HELP to any message or contact us through the main website.</p>
+        <p class="small">By opting in, you also agree to our <a href="/terms" target="_blank">Terms of Use</a> and <a href="/privacy" target="_blank">Privacy Policy</a>.</p>
+      </div>
+
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            required
+          />
+          <span>I consent to receive SMS and MMS messages at the mobile phone number provided above. I understand that I can opt out at any time by replying STOP. <span style="color: #c62828;">*</span></span>
+        </label>
+      </div>
+
+      <button type="submit" id="submitBtn">Sign Up for SMS</button>
+    </form>
+
+    <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--light-text); text-align: center;">
+      <span style="color: #c62828;">*</span> Required fields
+    </p>
+  </div>
+
+  <script>
+    const form = document.getElementById('smsSignupForm');
+    const messageDiv = document.getElementById('message');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Configure your webhook URL here
+    const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
+
+    function showMessage(text, type) {
+      messageDiv.textContent = text;
+      messageDiv.className = `message show ${type}`;
+      messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideMessage() {
+      messageDiv.className = 'message';
+    }
+
+    function formatPhoneNumber(phone) {
+      // Remove all non-numeric characters
+      const cleaned = phone.replace(/\D/g, '');
+      return cleaned;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideMessage();
+
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formatPhoneNumber(formData.get('phone')),
+        consent: formData.get('consent') === 'on',
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      };
+
+      // Validate phone number
+      if (!data.phone || data.phone.length < 10) {
+        showMessage('Please enter a valid mobile phone number.', 'error');
+        return;
+      }
+
+      // Validate consent
+      if (!data.consent) {
+        showMessage('You must consent to receive SMS messages to sign up.', 'error');
+        return;
+      }
+
+      // Disable submit button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      try {
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          showMessage('Thank you for signing up! You will start receiving SMS messages at the number you provided.', 'success');
+          form.reset();
+        } else {
+          throw new Error('Failed to submit form');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        showMessage('There was an error processing your request. Please try again later.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign Up for SMS';
+      }
+    });
+
+    // Format phone number as user types
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 0) {
+        if (value.length <= 3) {
+          value = `(${value}`;
+        } else if (value.length <= 6) {
+          value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+        } else {
+          value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+        }
+      }
+      e.target.value = value;
+    });
+  </script>
+</body>
+</html>
