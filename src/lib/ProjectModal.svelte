@@ -15,7 +15,7 @@
   }
 
   const projects: Record<string, ProjectData> = {
-    vision : {
+    vision: {
       title: 'Ad-Hoc Vision',
       tagline: 'Facial Recognition Prototype',
       description: [
@@ -23,13 +23,9 @@
         'The prototype operates across six distinct modes, from live capture and recognition to static image and government‑ID scanning. Its design prioritizes liveness challenges (blink, head turn, mouth movement) to resist spoofing and ensure real‑person interaction. When scanning IDs, the app leverages OpenAI APIs to clean up card images, normalize lighting, and run AI‑based OCR, turning complex card visuals into structured, machine‑readable data—entirely within a controlled, user‑consented flow.',
         'This demonstration showcases the union of browser‑native computation and ethical data handling. By pairing vector embeddings with direct‑in‑browser processing, it proves that facial recognition doesn’t have to compromise security or privacy. Instead, it can remain transparent and user‑centric—an embodiment of the Creative Ad‑Hoc Solutions philosophy: smart, minimal, practical innovation built around real‑world constraints.'
       ],
-      images: ['/img/face-static-rec.png',
-               '/img/face-license-capture.jpg',
-               '/img/face-capture.jpg',
-               '/img/face-admin.jpg'
-              ],
+      images: ['/img/face-static-rec.png', '/img/face-license-capture.jpg', '/img/face-capture.jpg', '/img/face-admin.jpg']
     },
-    
+
     analytics: {
       title: 'Ad‑Hoc Analytics',
       description: [
@@ -44,9 +40,7 @@
         '/img/ad-hoc-analytics-manage-site-3-delete.png',
         '/img/ad-hoc-analytics-link-activity.png'
       ],
-      links: [
-        { text: 'Github Readme file', url: 'https://github.com/micah1701/ad-hoc-analytics/blob/main/README.md' }
-      ]
+      links: [{ text: 'Github Readme file', url: 'https://github.com/micah1701/ad-hoc-analytics/blob/main/README.md' }]
     },
     hodl: {
       title: 'Ad‑Hoc Hodl',
@@ -56,28 +50,17 @@
         'It features encrypted wallet authentication, multi‑wallet integration, and live market pricing while preserving user privacy and autonomy. Every action is verifiable on‑chain, promoting trust through transparency rather than compliance bureaucracy.',
         'Designed with the same pragmatic mindset behind the entire Creative Ad‑Hoc Solutions suite, this project pairs blockchain security with web‑app simplicity: fast to deploy, easy to maintain, and aligned with the principles of open, user‑owned technology.'
       ],
-      images: [
-        '/img/hodl-dashboard.png',
-        '/img/hodl-marketplace.png',
-        '/img/hodl-offer-long.png',
-        '/img/hodl-homepage.png'
-      ]
+      images: ['/img/hodl-dashboard.png', '/img/hodl-marketplace.png', '/img/hodl-offer-long.png', '/img/hodl-homepage.png']
     },
     api: {
       title: 'Node1 API Framework',
       description: [
         'A secure, modular Node.js and TypeScript foundation designed to make backend development straightforward and future‑proof.',
-        'It provides ready‑to‑use components for JWT authentication, role‑based access, encrypted key storage, request validation, and integrations with MySQL or Supabase. With clean separation between core and app layers, it encourages maintainable design and clear boundaries while keeping complexity low.',
-        'Where many enterprise frameworks overwhelm developers with features and configuration, Node1 API Framework delivers an elegant, security‑first baseline. It\'s the backend architecture you can actually understand — designed for developers who value control, clarity, and creative problem‑solving.'
+        "It provides ready‑to‑use components for JWT authentication, role‑based access, encrypted key storage, request validation, and integrations with MySQL or Supabase. With clean separation between core and app layers, it encourages maintainable design and clear boundaries while keeping complexity low.",
+        "Where many enterprise frameworks overwhelm developers with features and configuration, Node1 API Framework delivers an elegant, security‑first baseline. It's the backend architecture you can actually understand — designed for developers who value control, clarity, and creative problem‑solving."
       ],
-      images: [
-        '/img/node1-postman-get-token.png',
-        '/img/node1-github-sample.png',
-        '/img/node1-postman-view-log.png'
-      ],
-      links: [
-        { text: 'documentation on Github', url: 'https://github.com/micah1701/Node1/' }
-      ]
+      images: ['/img/node1-postman-get-token.png', '/img/node1-github-sample.png', '/img/node1-postman-view-log.png'],
+      links: [{ text: 'documentation on Github', url: 'https://github.com/micah1701/Node1/' }]
     }
   };
 
@@ -94,13 +77,19 @@
   }
 </script>
 
-<div class="modal" on:click={handleBackgroundClick}>
-  <div class="modal-content">
-    <span class="close-btn" on:click={handleClose}>&times;</span>
+<div
+  class="project-modal"
+  role="button"
+  tabindex="0"
+  on:click={handleBackgroundClick}
+  on:keydown={(e) => e.key === 'Escape' && handleClose()}
+>
+  <div class="project-modal-content retro-panel">
+    <button type="button" class="modal-close-btn" on:click={handleClose} aria-label="Close">&times;</button>
 
-    <h2>{project.title}</h2>
+    <h2 class="font-pixel modal-title">{project.title}</h2>
     {#if project.tagline}
-      <p class="tagline">{project.tagline}</p>
+      <p class="modal-tagline font-mono">{project.tagline}</p>
     {/if}
 
     <ImageSlider images={project.images} alt={project.title} />
@@ -116,9 +105,72 @@
             {#if i > 0}, {/if}
             in the <a href={link.url} target="_blank">{link.text}</a>
           {/each}.
-          
         </p>
       {/if}
     </div>
   </div>
 </div>
+
+<style>
+  .project-modal {
+    display: block;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(4, 6, 14, 0.88);
+  }
+
+  .project-modal-content {
+    background: #0a0e1e;
+    color: var(--arcade-text);
+    margin: 3rem auto;
+    max-width: 800px;
+    padding: 1.5rem 2rem 2rem;
+    position: relative;
+    box-shadow: 10px 10px 0 rgba(78, 227, 211, 0.18);
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: var(--arcade-muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    padding: 0;
+  }
+  .modal-close-btn:hover {
+    color: var(--arcade-teal);
+  }
+
+  .modal-title {
+    font-size: 18px;
+    color: #ffffff;
+    margin: 0.5rem 0 0.5rem;
+  }
+  .modal-tagline {
+    color: var(--arcade-teal);
+    font-size: 13px;
+    margin-bottom: 1rem;
+  }
+
+  .modal-text p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #cfd8f0;
+  }
+
+  @media (max-width: 600px) {
+    .project-modal-content {
+      margin: 2rem 1rem;
+      padding: 1rem;
+    }
+  }
+</style>

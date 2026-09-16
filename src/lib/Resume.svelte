@@ -1,4 +1,10 @@
 <script lang="ts">
+  import RetroButton from './RetroButton.svelte';
+
+  function trackResumeDownload() {
+    window.analytics?.trackDownload('/micah_murray.pdf', 'Resume Download');
+  }
+
   interface Job {
     company: string;
     location: string;
@@ -36,7 +42,7 @@
       responsibilities: [
         'Backend Laravel development for multiple campaign landing-page websites.',
         'Dynamic content population using blade and twig templating.',
-        'Worked closely with the client\'s technical staff to comply with stringent security and coding standards.',
+        "Worked closely with the client's technical staff to comply with stringent security and coding standards.",
         'Feature enhancements, technical debt improvements, and campaign related new development for multiple sites.',
         'Notable enterprise client work included: MIT, The Hartford, Carling Industries, Aetna, and TIAA.',
         'Automated cross-platform analytics reporting with application to pull paid-search and banner ad data, parse and consolidate relevant information, and push via API to Google Data Studio.',
@@ -53,7 +59,7 @@
         'Installation and upgrades of Sitefinity site management platform.',
         'Team lead for 2017 site rebuild with half-million dollar budget.',
         'Implemented persona-based content personalization.',
-        'Technical support contact for Liberty\'s internal marketing group.',
+        "Technical support contact for Liberty's internal marketing group.",
         'Consolidated dozens of campaign-specific microsites by devising and developing improved analytic tracking methods.',
         'Built a modular landing page framework for rapid development of new campaign sites.',
         'Programmed 2016 redesign in Laravel framework.',
@@ -71,7 +77,7 @@
         'Proprietary Content Management System built on an open source framework with custom tools for user and page management.',
         'Web-based multi-device synchronization platform for live audience interaction.',
         'Sales portfolio sharing tool for personalized lead generation.',
-        'Notable website development projects include: The Hartford Public Library, Riverfront Recapture, The Metropolitan District (MDC), The Jewish Federation of Greater Hartford, Connecticut Women\'s Hall of Fame, The Connecticut Freedom Trail, MassMutual Fact or Fiction financial services micro site.'
+        "Notable website development projects include: The Hartford Public Library, Riverfront Recapture, The Metropolitan District (MDC), The Jewish Federation of Greater Hartford, Connecticut Women's Hall of Fame, The Connecticut Freedom Trail, MassMutual Fact or Fiction financial services micro site."
       ]
     },
     {
@@ -81,8 +87,8 @@
       period: 'January 2007 - April 2010',
       description: '',
       responsibilities: [
-        'Developed comprehensive online membership enrollment/renewal application utilized by 161,000 American Radio Relay League members, modernizing the previous snail-mail, e-mail, and manual data entry process.',
-        'Programmed online software for data-processing of amateur radio exam results with intelligent user input fields. Passing data between local back-end systems and out to the FCC\'s Universal Licensing Online Database.',
+        "Developed comprehensive online membership enrollment/renewal application utilized by 161,000 American Radio Relay League members, modernizing the previous snail-mail, e-mail, and manual data entry process.",
+        "Programmed online software for data-processing of amateur radio exam results with intelligent user input fields. Passing data between local back-end systems and out to the FCC's Universal Licensing Online Database.",
         'Replaced manual HTML news publishing process with custom application, allowing editorial staff to self-publish articles, saving up to 8 hours a week of IT department time.'
       ]
     },
@@ -94,7 +100,7 @@
       description: '',
       responsibilities: [
         'Maintained the online sales team CRM application used by 700 brokerage employees nationwide.',
-        'National task force committee member to implement third party CRM/SFA products (this was the olden days when salesforce.com was disqualified because the C-level couldn\'t understand SaaS)',
+        "National task force committee member to implement third party CRM/SFA products (this was the olden days when salesforce.com was disqualified because the C-level couldn't understand SaaS)",
         'Created custom ad-hoc sales reports from user entered data.',
         'Exponentially improved the ongoing administration of demonstration websites, used in presentations for potential clients, by migrating existing data from static hand-coded HTML to a template and database driven structure.'
       ]
@@ -123,49 +129,57 @@
   ];
 </script>
 
-<section id="resume" class="resume">
-  <div class="resume-container">
-    <p class="pdf-download">
-      <a href="/micah_murray.pdf" download class="download-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="12" y1="18" x2="12" y2="12"></line>
-          <polyline points="9 15 12 18 15 15"></polyline>
-        </svg>
-        Download PDF
-      </a>
+<section id="resume" class="resume-section">
+  <div class="resume-cta">
+    <p class="kicker" style="justify-content: center; display: flex;">Insert coin</p>
+    <h2 class="font-pixel resume-cta-title">Ready when you are</h2>
+    <p class="resume-cta-lead">
+      If you need a developer who can plan, build, and adapt — for a team or for a single stubborn project — I'd
+      like to hear about it.
     </p>
+    <div class="resume-cta-buttons">
+      <RetroButton href="/micah_murray.pdf" variant="white" download on:click={trackResumeDownload}>Download résumé ↓</RetroButton>
+      <RetroButton href="mailto:micah@creativeadhocsolutions.com" variant="primary">Email me</RetroButton>
+    </div>
+  </div>
+
+  <div class="resume-container retro-panel">
     <div class="resume-header">
       <div class="resume-header-left">
-        <h1>Micah Murray</h1>
-        <p class="tagline">Senior-Level Full Stack Progressive Web Application Developer with over two decades experience supporting sales, marketing, and manufacturing.</p>
-        <p class="methodology">Learn the Process → Find the Bottleneck → Have Big Ideas → PoC → MVP</p>
+        <h1 class="font-pixel resume-name">Micah Murray</h1>
+        <p class="resume-tagline">
+          Senior-Level Full Stack Progressive Web Application Developer with over two decades experience
+          supporting sales, marketing, and manufacturing.
+        </p>
+        <p class="resume-method font-mono">Learn the Process → Find the Bottleneck → Have Big Ideas → PoC → MVP</p>
       </div>
-      <div class="resume-header-right">
-        <p>130 Westmoreland Ave<br>Longmeadow, Massachusetts
+      <div class="resume-header-right font-mono">
+        <p>130 Westmoreland Ave<br />Longmeadow, Massachusetts</p>
         <p>
-          <a href="https://linkedin.com/in/micahmurray" target="_blank">linkedin.com/in/micahmurray</a><br>
-          <a href="https://github.com/micah1701" target="_blank">github.com/micah1701</a><br>
+          <a href="https://linkedin.com/in/micahmurray" target="_blank">linkedin.com/in/micahmurray</a><br />
+          <a href="https://github.com/micah1701" target="_blank">github.com/micah1701</a>
         </p>
       </div>
     </div>
 
     <div class="resume-body">
       <div class="resume-main">
-        <h2>Experience</h2>
+        <h2 class="font-pixel resume-h2">Experience</h2>
 
         {#each jobs as job}
           <div class="job">
-            <h3>{job.company}, <span class="location">{job.location}</span> — <span class="title">{job.title}</span></h3>
-            <p class="period">{job.period}</p>
+            <h3 class="job-title">
+              {job.company}, <span class="job-location">{job.location}</span> —
+              <span class="job-role">{job.title}</span>
+            </h3>
+            <p class="job-period font-mono">{job.period}</p>
 
             {#if job.description}
-              <p class="description">{job.description}</p>
+              <p class="job-description">{job.description}</p>
             {/if}
 
             {#if job.projects}
-              <p class="section-title">Projects</p>
+              <p class="job-section-title font-mono">Projects</p>
               <ul>
                 {#each job.projects as project}
                   <li>{project}</li>
@@ -185,17 +199,17 @@
       </div>
 
       <div class="resume-sidebar">
-        <h2>Skills</h2>
+        <h2 class="font-pixel resume-h2">Skills</h2>
         <ul class="skills-list">
           {#each skills as skill}
             <li>{skill}</li>
           {/each}
         </ul>
 
-        <h2>Education</h2>
-        <div class="education">
-          <p><strong>Eastern Connecticut State University</strong><br>Willimantic CT</p>
-          <p><strong>Eastern College</strong><br>St Davids PA</p>
+        <h2 class="font-pixel resume-h2">Education</h2>
+        <div class="education font-mono">
+          <p><strong>Eastern Connecticut State University</strong><br />Willimantic CT</p>
+          <p><strong>Eastern College</strong><br />St Davids PA</p>
         </div>
       </div>
     </div>
@@ -203,18 +217,41 @@
 </section>
 
 <style>
-  .resume {
-    background: var(--bg);
-    padding: 3rem 1rem;
+  .resume-section {
+    border-top: 4px solid var(--arcade-border);
+  }
+
+  .resume-cta {
+    background: linear-gradient(150deg, rgba(78, 227, 211, 0.12), rgba(255, 69, 142, 0.12));
+    padding: 84px 24px;
+    text-align: center;
+  }
+  .resume-cta-title {
+    font-size: clamp(20px, 3vw, 34px);
+    line-height: 1.4;
+    color: #ffffff;
+    margin: 0 0 22px;
+  }
+  .resume-cta-lead {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #cfd8f0;
+    max-width: 54ch;
+    margin: 0 auto 38px;
+  }
+  .resume-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
   }
 
   .resume-container {
     max-width: 1100px;
     margin: 0 auto;
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    margin-top: -1px;
+    position: relative;
   }
 
   .resume-header {
@@ -222,72 +259,36 @@
     justify-content: space-between;
     gap: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--arcade-border);
     margin-bottom: 2rem;
+    flex-wrap: wrap;
   }
-
   .resume-header-left {
     flex: 1;
+    min-width: 260px;
   }
-
-  .resume-header h1 {
-    margin: 0 0 0.5rem 0;
-    color: var(--accent);
-    font-size: 2.5rem;
+  .resume-name {
+    margin: 0 0 1rem 0;
+    color: #ffffff;
+    font-size: 1.6rem;
   }
-
-  .tagline {
+  .resume-tagline {
     margin: 0.5rem 0;
     line-height: 1.5;
-    color: var(--text);
+    color: #cfd8f0;
   }
-
-  .methodology {
+  .resume-method {
     margin: 1rem 0 0 0;
-    color: var(--accent);
-    font-weight: 500;
-    font-size: 0.9rem;
+    color: var(--arcade-teal);
+    font-size: 0.85rem;
   }
-
   .resume-header-right {
     text-align: right;
     font-size: 0.9rem;
+    color: var(--arcade-muted);
   }
-
   .resume-header-right p {
     margin: 0.5rem 0;
-  }
-
-  .resume-header-right a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  .resume-header-right a:hover {
-    text-decoration: underline;
-  }
-
-  .pdf-download {
-    margin-bottom: 1.5rem;
-  }
-
-  .download-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: opacity 0.2s ease;
-  }
-
-  .download-link:hover {
-    opacity: 0.7;
-    text-decoration: underline;
-  }
-
-  .download-link svg {
-    flex-shrink: 0;
   }
 
   .resume-body {
@@ -296,56 +297,55 @@
     gap: 2rem;
   }
 
-  .resume-main h2,
-  .resume-sidebar h2 {
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 0.5rem;
+  .resume-h2 {
+    color: #ffffff;
+    border-bottom: 2px solid var(--arcade-border);
+    padding-bottom: 0.75rem;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 15px;
   }
 
   .job {
     margin-bottom: 2rem;
   }
-
-  .job h3 {
+  .job-title {
     margin: 0 0 0.25rem 0;
-    color: var(--text);
-    font-size: 1.1rem;
+    color: var(--arcade-text);
+    font-size: 1.05rem;
   }
-
-  .job .location {
+  .job-location {
     font-weight: normal;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    color: var(--arcade-muted);
   }
-
-  .job .title {
+  .job-role {
     font-style: italic;
     font-weight: normal;
-    font-size: 0.95rem;
-  }
-
-  .period {
-    color: var(--light-text);
     font-size: 0.9rem;
+    color: var(--arcade-muted);
+  }
+  .job-period {
+    color: var(--arcade-teal);
+    font-size: 0.8rem;
     margin: 0.25rem 0 0.75rem 0;
   }
-
-  .description {
+  .job-description {
     margin: 0.75rem 0;
+    color: #cfd8f0;
   }
-
-  .section-title {
+  .job-section-title {
     font-weight: 600;
     margin: 1rem 0 0.5rem 0;
+    color: var(--arcade-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
-
   .job ul {
     margin: 0.5rem 0;
-    padding-left: 1.5rem;
+    padding-left: 1.25rem;
+    color: #cfd8f0;
   }
-
   .job li {
     margin-bottom: 0.5rem;
     line-height: 1.5;
@@ -354,48 +354,32 @@
   .skills-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 2rem;
   }
-
   .skills-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-    font-size: 0.9rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--arcade-border);
+    font-size: 0.85rem;
+    color: #cfd8f0;
   }
 
   .education {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: #cfd8f0;
   }
-
   .education p {
     margin: 1rem 0;
   }
 
   @media (max-width: 900px) {
-    .resume-header {
-      flex-direction: column;
-    }
-
     .resume-header-right {
       text-align: left;
     }
-
     .resume-body {
       grid-template-columns: 1fr;
     }
-
     .resume-sidebar {
       order: 2;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .resume-container {
-      padding: 1rem;
-    }
-
-    .resume-header h1 {
-      font-size: 2rem;
     }
   }
 </style>

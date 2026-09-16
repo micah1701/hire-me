@@ -1,6 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import ProjectCard from './ProjectCard.svelte';
+  import SectionHeading from './SectionHeading.svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -9,51 +10,67 @@
   }
 </script>
 
-<section id="work" class="work">
-  <h2>Recent Projects</h2>
-  <div class="project-grid">
-    <ProjectCard
-      projectId="vision"
-      image="/img/face-license-capture.jpg"
-      imgClass=""
-      title="Ad‑Hoc Vision: Facial Recognition Prototype"
-      subtitle="Browser based motion tracking, face matching, and photo ID card reader."
-      description="A proof‑of‑concept browser‑based facial recognition system built with Svelte, MediaPipe, and face‑api.js. All processing runs locally in the browser using vector embeddings and no raw images stored. The app taps OpenAI‑powered tools to handle additional image cleanup and OCR for ID scanning."
-      techStack={['svelte', 'supabase', 'mediapipe', 'venice', 'openai']}
-      on:click={() => openModal('vision')}
-    />
-    
-    <ProjectCard
-      projectId="analytics"
-      image="/img/ad-hoc-analytics.png"
-      imgClass="img-contain"
-      title="Ad‑Hoc Analytics"
-      subtitle="a lightweight, privacy‑focused alternative to big‑tech analytics."
-      description="A privacy‑first website analytics app built with React and Supabase. It tracks real‑time visits, top pages, and link activity—without using cookies or invasive tracking—making setup and maintenance refreshingly simple."
-      techStack={['react', 'supabase']}
-      on:click={() => openModal('analytics')}
-    />
+<section id="work" class="work-section">
+  <div class="work-container">
+    <SectionHeading kicker="Level select" title="Recent projects" color="teal" />
+    <div class="work-grid">
+      <ProjectCard
+        projectId="vision"
+        image="/img/face-license-capture.jpg"
+        title="Ad-Hoc Vision"
+        subtitle="Facial recognition prototype"
+        description="Browser-based motion tracking, face matching, and photo-ID reading. Everything runs client-side as 128-dimension vector embeddings — no raw images stored."
+        techStack={['svelte', 'mediapipe', 'openai', 'supabase']}
+        on:click={() => openModal('vision')}
+      />
 
-    <ProjectCard
-      projectId="hodl"
-      image="/img/hodl-homepage.png"
-      imgClass="img-contain"
-      title="ALGO Hodl"
-      subtitle="Trustless peer‑to‑peer trading built on Algorand."
-      description="A decentralized P2P trading platform that uses Algorand smart‑contract escrows to execute secure, trustless cryptocurrency trades. Simplicity, transparency, and privacy are built in—no intermediaries, no cookies, no tracking—just fast, verifiable transactions."
-      techStack={['algorand', 'svelte', 'vite', 'walletconnect']}
-      on:click={() => openModal('hodl')}
-    />
+      <ProjectCard
+        projectId="analytics"
+        image="/img/ad-hoc-analytics.png"
+        imgClass="img-contain"
+        title="Ad-Hoc Analytics"
+        subtitle="Privacy-first traffic stats"
+        description="Real-time visits, top pages, and link activity with no cookies and no big-tech dependency. One script tag to install, and you keep the data."
+        techStack={['react', 'typescript', 'supabase']}
+        on:click={() => openModal('analytics')}
+      />
 
-    <ProjectCard
-      projectId="api"
-      image="/img/node1-postman-get-token.png"
-      imgClass=""
-      title="Node1 API Framework"
-      subtitle="Build secure, modular APIs without the overhead."
-      description="A modern Node.js and TypeScript foundation for building secure REST APIs with JWT authentication, comprehensive logging, and encrypted storage. It's engineered for clarity and security, not complexity—helping you spin up well‑structured backends fast."
-      techStack={['nodejs', 'typescript']}
-      on:click={() => openModal('api')}
-    />
+      <ProjectCard
+        projectId="hodl"
+        image="/img/hodl-homepage.png"
+        imgClass="img-contain"
+        title="ALGO Hodl"
+        subtitle="Trustless P2P trading"
+        description="Algorand smart-contract escrows executing peer-to-peer crypto trades. Encrypted wallet auth, live pricing, every action verifiable on-chain. No intermediaries."
+        techStack={['algorand', 'svelte', 'walletconnect']}
+        on:click={() => openModal('hodl')}
+      />
+
+      <ProjectCard
+        projectId="api"
+        image="/img/node1-postman-get-token.png"
+        title="Node1 API"
+        subtitle="Secure, modular API framework"
+        description="A Node and TypeScript foundation with JWT auth, role-based access, encrypted key storage, and real logging. Backend architecture you can actually read."
+        techStack={['nodejs', 'typescript', 'vite']}
+        on:click={() => openModal('api')}
+      />
+    </div>
   </div>
 </section>
+
+<style>
+  .work-section {
+    border-top: 4px solid var(--arcade-border);
+  }
+  .work-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 78px 24px;
+  }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+</style>
