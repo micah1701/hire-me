@@ -55,6 +55,28 @@
         techStack={['nodejs', 'typescript', 'vite']}
         on:click={() => openModal('api')}
       />
+
+      <ProjectCard
+        projectId="verify"
+        image="/img/verify-certificate.svg"
+        imgClass="img-contain"
+        title="Ad-Hoc Verify"
+        subtitle="Verification-as-a-Service"
+        description="Send a link, they scan an ID and snap a selfie, you get a verified result in seconds. Liveness checks and face matching run entirely in the browser, then a tamper-proof certificate is anchored on-chain."
+        techStack={['svelte', 'mediapipe', 'openai', 'algorand']}
+        on:click={() => openModal('verify')}
+      />
+
+      <ProjectCard
+        projectId="humblee"
+        image="/img/humblee-page-editor.svg"
+        imgClass="img-contain"
+        title="Humblee"
+        subtitle="PHP framework & CMS"
+        description="A lightweight MVC framework with a full CMS built in — visual page editor, unlimited revision history, role-based access — so developers get a clean foundation without fighting a plugin ecosystem."
+        techStack={['php', 'mysql', 'svelte', 'typescript']}
+        on:click={() => openModal('humblee')}
+      />
     </div>
   </div>
 </section>

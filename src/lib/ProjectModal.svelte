@@ -61,6 +61,28 @@
       ],
       images: ['/img/node1-postman-get-token.png', '/img/node1-github-sample.png', '/img/node1-postman-view-log.png'],
       links: [{ text: 'documentation on Github', url: 'https://github.com/micah1701/Node1/' }]
+    },
+    verify: {
+      title: 'Ad‑Hoc Verify',
+      tagline: 'Live identity verification with a blockchain-anchored certificate of proof.',
+      description: [
+        "Ad‑Hoc Verify is a browser‑based identity verification service built for the moments when you need to know someone is really who they say they are — onboarding a contractor, signing a contract, granting access to something sensitive — without signing up for an enterprise KYC contract to do it. Send a person a unique link, they scan their driver's license and snap a selfie on their phone, and you get a real‑time result back through a webhook. No app to install, no account to create.",
+        "Every check runs a live facial comparison between the ID photo and the selfie, cross‑validates the license's barcode against its printed data, and requires liveness challenges — a blink, a head turn — to keep bots and photos‑of‑photos out. All of it happens in the user's browser: the driver's license image never touches a server, and any optional personal details they share are encrypted in transit and auto‑purged, with true end‑to‑end encryption available for teams that supply their own RSA keys.",
+        "Each completed check produces a shareable certificate at a permanent URL, with a cryptographic fingerprint anchored to the Algorand blockchain — proof that a verification happened, without exposing what was verified. It's the same instinct behind every Creative Ad‑Hoc Solutions build: solve the real trust problem, skip the bureaucracy, and don't make the user install anything to prove they're human."
+      ],
+      images: ['/img/verify-landing.svg', '/img/verify-id-scan.svg', '/img/verify-selfie-liveness.svg', '/img/verify-certificate.svg'],
+      links: [{ text: 'live site at adhocverify.com', url: 'https://adhocverify.com' }]
+    },
+    humblee: {
+      title: 'Humblee',
+      tagline: 'The lightweight PHP framework with a CMS built in.',
+      description: [
+        "Humblee is a lightweight PHP framework with a full content‑management system built directly into it — not bolted on as an afterthought. Developers get routing, controller dispatch, a readable database query layer, and encryption helpers to start from; content teams get a visual page editor, unlimited revision history, and role‑based publishing. There's deliberately no plugin marketplace: extending Humblee means writing plain PHP, not hunting for a plugin and hoping it's still maintained.",
+        "Under the hood it pairs Idiorm for injection‑safe database access with libsodium's authenticated encryption — media files in storage can be encrypted individually, each with its own nonce, so decryption never depends on a database lookup. Page templates support named \"content block slots,\" letting the same block type appear multiple times in a layout without touching code, and the admin UI itself is themeable through Bulma's CSS custom properties.",
+        "Open source and MIT‑licensed since 2017, Humblee is built for developers who'd rather write a controller than configure one — a clean, security‑first baseline with a CMS that doesn't get in the way, echoing the same philosophy behind Node1: architecture you can actually read."
+      ],
+      images: ['/img/humblee-admin-dashboard.svg', '/img/humblee-page-editor.svg', '/img/humblee-media-library.svg', '/img/humblee-revision-history.svg'],
+      links: [{ text: 'Github Readme file', url: 'https://github.com/micah1701/humblee' }]
     }
   };
 
