@@ -1,8 +1,20 @@
 <script lang="ts">
-  import RetroButton from './RetroButton.svelte';
+  import RetroButton from "./RetroButton.svelte";
+
+  function splitFirstWord(text: string) {
+    const spaceIndex = text.indexOf(" ");
+    if (spaceIndex === -1) return { firstWord: text, rest: "" };
+    return {
+      firstWord: text.slice(0, spaceIndex),
+      rest: text.slice(spaceIndex),
+    };
+  }
 
   function trackResumeDownload() {
-    window.analytics?.trackDownload('/micah_murray.pdf', 'Resume Download');
+    window.analytics?.trackDownload(
+      "/Micah_Murray_Senior_Web_Engineer.pdf",
+      "Resume Download",
+    );
   }
 
   interface Job {
@@ -11,135 +23,160 @@
     title: string;
     period: string;
     description: string;
-    projects?: string[];
-    responsibilities?: string[];
+    details?: string[];
+    stack?: string[];
   }
 
   const jobs: Job[] = [
     {
-      company: 'SCA Pharma',
-      location: 'Windsor CT (Remote)',
-      title: 'Full Stack Developer',
-      period: 'September 2019 - Present',
-      description: 'Built and managed applications for use in pharmaceutical manufacturing, inspection, and quality control throughout the product lifecycle. Designed and developed simple control interfaces, heads-up displays, and dashboard to aid in tracking of critical cGMP data in compliance with FDA, DEA, and other governmental regulatory agencies.',
-      projects: [
-        'ILP PID/Timers/Digital forms and Sage integration',
-        'Extract, transform, and load tools (sage to salesforce etc)',
-        'Redeveloped E-Commerce website subscription order website, handling 80% of sales.',
-        'Created Intranet website on a custom PHP-based CMS as a pet project to aid in employee communications.',
-        'Integrations between ldap, AD, paylocity, toolbox, ecom, salesforce, sage, mastercontrol (pdf parsing and dynamic modification)',
-        'Secure ad-hoc data storage (datastore)',
-        'Encrypted-at-rest file storage (datastore, intranet, sage2salesforce tool, etc)',
-        'Developed controlled document chain of custody and reconciliation system.'
-      ]
+      company: "SCA Pharma",
+      location: "Windsor CT (Remote)",
+      title: "Full Stack Developer",
+      period: "September 2019 - January 2026",
+      description:
+        "Senior member of a core development team responsible for evolving and maintaining critical manufacturing and enterprise systems built on a Java/Spring backend with MS SQL, MySQL, and Sage X3 ERP integration. Delivered production-grade features in the core legacy stack while independently designing and building lightweight PHP and Node.js applications, REST APIs, and TypeScript-based tooling to close functionality gaps, automate data collection, and modernize manual processes — all within a heavily regulated environment governed by cGMP, FDA, and DEA compliance standards.",
+      details: [
+        "Architected and built a secure REST API integration layer enabling controlled cross-system data access between MasterControl, Salesforce, and internal ERP systems, while maintaining strict regulatory compliance controls.",
+        "Designed and developed a document printing microservice generating traceable unique identifiers for printed records, improving document accountability and FDA/DEA audit readiness.",
+        "Built full-stack, PHP and Node.js-powered web interfaces that replaced handwritten production data logs — significantly improving data accuracy, accessibility, and workflow efficiency for line operators.",
+        "Developed ETL pipelines and data automation tooling to feed real-time manufacturing dashboards and intranet applications supporting production, quality, and sales operations.",
+        "Served as a technical resource and mentor within a four-developer core team, advocating for clean architecture, API-first design, and maintainable, testable code.",
+      ],
+      stack: [
+        "Java",
+        "Spring",
+        "PHP",
+        "Node.js",
+        "TypeScript",
+        "JavaScript",
+        "MS SQL",
+        "MySQL",
+        "REST APIs",
+        "Sage X3 ERP",
+        "ETL",
+        "HTML/CSS",
+      ],
     },
     {
-      company: 'Primacy',
-      location: 'Farmington CT',
-      title: 'Senior Technology Developer',
-      period: 'June 2018 - August 2019',
-      description: 'Tech lead for Mutual of Omaha marketing properties',
-      responsibilities: [
-        'Backend Laravel development for multiple campaign landing-page websites.',
-        'Dynamic content population using blade and twig templating.',
-        "Worked closely with the client's technical staff to comply with stringent security and coding standards.",
-        'Feature enhancements, technical debt improvements, and campaign related new development for multiple sites.',
-        'Notable enterprise client work included: MIT, The Hartford, Carling Industries, Aetna, and TIAA.',
-        'Automated cross-platform analytics reporting with application to pull paid-search and banner ad data, parse and consolidate relevant information, and push via API to Google Data Studio.',
-        'Front end build-out in Vue.js and TypeScript for intranet-based project management tools'
-      ]
+      company: "Primacy",
+      location: "Farmington CT",
+      title: "Senior Technology Developer",
+      period: "June 2018 - August 2019",
+      description:
+        "Full-stack developer within a digital agency serving multiple enterprise clients, translating complex visual designs into stable, scalable, production-grade web applications while contributing to internal tooling and engineering standards.",
+      details: [
+        "Developed and maintained responsive, full-stack Drupal-based web applications for enterprise clients, ensuring design fidelity, accessibility compliance, and cross-browser performance across deliverables.",
+        "Built and supported internal web tools using TypeScript and modern JavaScript frameworks to streamline internal production and content workflows.",
+        "Collaborated with multidisciplinary engineering and design teams to establish reusable, modular codebase standards and improve overall development practices.",
+      ],
+      stack: ["Drupal", "PHP", "TypeScript", "JavaScript", "HTML/CSS"],
     },
     {
-      company: 'Cronin',
-      location: 'Glastonbury CT',
-      title: 'Senior Full Stack Developer',
-      period: 'June 2014 - April 2018',
-      description: 'Lead developer for Liberty-Bank.com',
-      responsibilities: [
-        'Installation and upgrades of Sitefinity site management platform.',
-        'Team lead for 2017 site rebuild with half-million dollar budget.',
-        'Implemented persona-based content personalization.',
-        "Technical support contact for Liberty's internal marketing group.",
-        'Consolidated dozens of campaign-specific microsites by devising and developing improved analytic tracking methods.',
-        'Built a modular landing page framework for rapid development of new campaign sites.',
-        'Programmed 2016 redesign in Laravel framework.',
-        'Simplified promotional code management process.',
-        'Integrated formstack.com to capture leads and order fulfillment.'
-      ]
+      company: "Cronin",
+      location: "Glastonbury CT",
+      title: "Senior Full Stack Developer",
+      period: "June 2014 - April 2018",
+      description:
+        "Lead developer on enterprise and digital marketing web initiatives, serving as both primary technical owner and primary client contact — balancing hands-on full-stack development with direct collaboration across design, IT, and account management teams.",
+      details: [
+        "Led full-stack development of a regional bank's complete website overhaul, serving as lead developer and primary point of contact with client IT staff and project managers to deliver a secure, scalable Sitefinity (.NET/C#) platform.",
+        "Architected and built dozens of responsive, PHP-driven landing pages and microsites for high-traffic lead-generation marketing campaigns, applying modern front-end performance and accessibility standards.",
+        "Partnered directly with design and UX teams to implement complex, accessible layouts, translating business and marketing goals into technical requirements and maintainable code.",
+        "Served as a go-to technical mentor and troubleshooting resource for teammates, resolving integration and deployment challenges across projects.",
+      ],
+      stack: [
+        "PHP",
+        "Sitefinity (.NET/C#)",
+        "JavaScript",
+        "HTML/CSS",
+        "MySQL",
+        "REST APIs",
+      ],
     },
     {
-      company: 'The Pita Group',
-      location: 'Rocky Hill CT',
-      title: 'Senior Interactive Developer',
-      period: 'April 2010 - June 2014',
-      description: '',
-      responsibilities: [
-        'Proprietary Content Management System built on an open source framework with custom tools for user and page management.',
-        'Web-based multi-device synchronization platform for live audience interaction.',
-        'Sales portfolio sharing tool for personalized lead generation.',
-        "Notable website development projects include: The Hartford Public Library, Riverfront Recapture, The Metropolitan District (MDC), The Jewish Federation of Greater Hartford, Connecticut Women's Hall of Fame, The Connecticut Freedom Trail, MassMutual Fact or Fiction financial services micro site."
-      ]
+      company: "The Pita Group",
+      location: "Rocky Hill CT",
+      title: "Senior Interactive Developer",
+      period: "April 2010 - June 2014",
+      description:
+        "Full-stack developer and technical innovation lead within a small, highly creative digital agency team, owning projects end-to-end from concept and prototyping through development and launch for a range of agency clients.",
+      details: [
+        "Designed and built custom, full-stack PHP web applications and interactive experiences tailored to individual client workflows and marketing objectives.",
+        "Served as internal innovation lead, prototyping new technical concepts and interactive features that were productized into recurring agency service offerings.",
+        "Acted as the primary technical bridge between creative, client, and engineering perspectives, translating design vision into scalable, maintainable code under tight project timelines.",
+        "Drove process and code-reuse improvements that accelerated delivery speed and improved consistency across concurrent client projects.",
+      ],
+      stack: [
+        "PHP",
+        "MySQL",
+        "JavaScript",
+        "HTML/CSS",
+        "jQuery",
+        "REST APIs",
+        "Adobe Creative Suite",
+      ],
     },
     {
-      company: 'ARRL',
-      location: 'Newington CT',
-      title: 'Web Application Developer',
-      period: 'January 2007 - April 2010',
-      description: '',
-      responsibilities: [
-        "Developed comprehensive online membership enrollment/renewal application utilized by 161,000 American Radio Relay League members, modernizing the previous snail-mail, e-mail, and manual data entry process.",
-        "Programmed online software for data-processing of amateur radio exam results with intelligent user input fields. Passing data between local back-end systems and out to the FCC's Universal Licensing Online Database.",
-        'Replaced manual HTML news publishing process with custom application, allowing editorial staff to self-publish articles, saving up to 8 hours a week of IT department time.'
-      ]
+      company: "ARRL",
+      location: "Newington CT",
+      title: "Web Application Developer",
+      period: "January 2007 - April 2010",
+      description:
+        "Built a full-stack online membership enrollment/renewal application used by 161,000 members, a data-processing system integrating with the FCC's Universal Licensing System, and a self-publishing tool for editorial staff. (PHP, MySQL, JavaScript, REST/data integration)",
     },
     {
-      company: 'Hilb Rogal & Hobbs',
-      location: 'Hartford CT',
-      title: 'Web Application Developer',
-      period: 'March 2003 - January 2007',
-      description: '',
-      responsibilities: [
-        'Maintained the online sales team CRM application used by 700 brokerage employees nationwide.',
-        "National task force committee member to implement third party CRM/SFA products (this was the olden days when salesforce.com was disqualified because the C-level couldn't understand SaaS)",
-        'Created custom ad-hoc sales reports from user entered data.',
-        'Exponentially improved the ongoing administration of demonstration websites, used in presentations for potential clients, by migrating existing data from static hand-coded HTML to a template and database driven structure.'
-      ]
-    }
+      company: "Hilb, Rogal & Hobbs",
+      location: "Hartford CT",
+      title: "Web Developer",
+      period: "March 2003 - December 2006",
+      description:
+        "Began professional software development career building ColdFusion and Flash-based sales reporting tools against a MySQL database for a national sales team, supporting a home-built SFA platform predating widely-available CRM tools. (ColdFusion, Flash, MySQL, HTML)",
+    },
   ];
 
   const skills = [
-    'Object Oriented PHP / Java',
-    'Javascript / TypeScript / Node',
-    '+some Python, Go, Rust',
-    'SQL Server / MySQL / Postgres',
-    '+some Redis, NoSQL, Supabase',
-    'Bug resolution / Code review / Reverse engineering',
-    'REST / API Development',
-    'GIT Source Control / GitHub',
-    'Problem Solving',
-    'IIS / Apache / Nginx / Docker',
-    'Open Stack / VPS / Cloud VM',
-    'OpenAI / GPT / Vibe Code',
-    'Zero Trust / oAuth2 / LDAP / SAML / OIDC / JWT',
-    '/* Witty Code Comments */',
-    '/>$ Cmd Line Interfaces',
-    'Windows / Linux / MacOS',
-    'Distributed Ledgers, Blockchain',
-    'E2E Cryptology'
+    "Object Oriented PHP / Java",
+    "Javascript / TypeScript / Node",
+    "+some Python, Go, Rust",
+    "SQL Server / MySQL / Postgres",
+    "+some Redis, NoSQL, Supabase",
+    "Bug resolution / Code review / Reverse engineering",
+    "REST / API Development",
+    "GIT Source Control / GitHub",
+    "Problem Solving",
+    "IIS / Apache / Nginx / Docker",
+    "Open Stack / VPS / Cloud VM",
+    "OpenAI / GPT / Vibe Code",
+    "Zero Trust / oAuth2 / LDAP / SAML / OIDC / JWT",
+    "/* Witty Code Comments */",
+    "/>$ Cmd Line Interfaces",
+    "Windows / Linux / MacOS",
+    "Distributed Ledgers, Blockchain",
+    "E2E Cryptology",
   ];
 </script>
 
 <section id="resume" class="resume-section">
   <div class="resume-cta">
-    <p class="kicker" style="justify-content: center; display: flex;">Insert coin</p>
+    <p class="kicker" style="justify-content: center; display: flex;">
+      Insert coin
+    </p>
     <h2 class="font-pixel resume-cta-title">Ready when you are</h2>
     <p class="resume-cta-lead">
-      If you need a developer who can plan, build, and adapt — for a team or for a single stubborn project — I'd
-      like to hear about it.
+      If you need a developer who can plan, build, and adapt — for a team or for
+      a single stubborn project — I'd like to hear about it.
     </p>
     <div class="resume-cta-buttons">
-      <RetroButton href="/micah_murray.pdf" variant="white" download on:click={trackResumeDownload}>Download résumé ↓</RetroButton>
-      <RetroButton href="mailto:micah@creativeadhocsolutions.com" variant="primary">Email me</RetroButton>
+      <RetroButton
+        href="/Micah_Murray_Senior_Web_Engineer.pdf"
+        variant="white"
+        download
+        on:click={trackResumeDownload}>Download résumé ↓</RetroButton
+      >
+      <RetroButton
+        href="mailto:micah@creativeadhocsolutions.com"
+        variant="primary">Email me</RetroButton
+      >
     </div>
   </div>
 
@@ -148,16 +185,37 @@
       <div class="resume-header-left">
         <h1 class="font-pixel resume-name">Micah Murray</h1>
         <p class="resume-tagline">
-          Senior-Level Full Stack Progressive Web Application Developer with over two decades experience
-          supporting sales, marketing, and manufacturing.
+          Senior Full-Stack Developer and Application Architect with 23+ years
+          of professional experience designing, building, and scaling web
+          applications and APIs across manufacturing, enterprise IT, sales,
+          marketing, and business operations. Deep expertise in PHP and
+          JavaScript (ES6+), with strong hands-on experience in Java,
+          TypeScript, Node.js, React, Laravel, Spring, and cloud-integrated
+          (AWS, Azure) full-stack development.
         </p>
-        <p class="resume-method font-mono">Learn the Process → Find the Bottleneck → Have Big Ideas → PoC → MVP</p>
+        <p class="resume-tagline">
+          Proven track record architecting secure, cross-system integrations,
+          modernizing legacy platforms, and automating manual workflows to
+          improve data integrity and operational efficiency.
+        </p>
+        <p class="resume-tagline">
+          Recognized for pairing deep technical expertise with a pragmatic,
+          big-picture mindset — delivering solutions that reduce manual
+          processes, close functionality gaps, and scale with the business.
+          Experienced mentor and technical resource for development teams, with
+          a track record of translating business requirements into maintainable,
+          production-grade software.
+        </p>
       </div>
       <div class="resume-header-right font-mono">
-        <p>130 Westmoreland Ave<br />Longmeadow, Massachusetts</p>
+        <p>Longmeadow, Massachusetts USA</p>
         <p>
-          <a href="https://linkedin.com/in/micahmurray" target="_blank">linkedin.com/in/micahmurray</a><br />
-          <a href="https://github.com/micah1701" target="_blank">github.com/micah1701</a>
+          <a href="https://linkedin.com/in/micahmurray" target="_blank"
+            >linkedin.com/in/micahmurray</a
+          ><br />
+          <a href="https://github.com/micah1701" target="_blank"
+            >github.com/micah1701</a
+          >
         </p>
       </div>
     </div>
@@ -178,21 +236,20 @@
               <p class="job-description">{job.description}</p>
             {/if}
 
-            {#if job.projects}
-              <p class="job-section-title font-mono">Projects</p>
+            {#if job.details}
               <ul>
-                {#each job.projects as project}
-                  <li>{project}</li>
+                {#each job.details as detail}
+                  {@const { firstWord, rest } = splitFirstWord(detail)}
+                  <li><span class="first_word">{firstWord}</span>{rest}</li>
                 {/each}
               </ul>
             {/if}
 
-            {#if job.responsibilities}
-              <ul>
-                {#each job.responsibilities as responsibility}
-                  <li>{responsibility}</li>
-                {/each}
-              </ul>
+            {#if job.stack}
+              <p class="job-stack font-mono">
+                <span class="job-section-title">Technologies:</span>
+                {job.stack.join(", ")}
+              </p>
             {/if}
           </div>
         {/each}
@@ -208,7 +265,10 @@
 
         <h2 class="font-pixel resume-h2">Education</h2>
         <div class="education font-mono">
-          <p><strong>Eastern Connecticut State University</strong><br />Willimantic CT</p>
+          <p>
+            <strong>Eastern Connecticut State University</strong><br
+            />Willimantic CT
+          </p>
           <p><strong>Eastern College</strong><br />St Davids PA</p>
         </div>
       </div>
@@ -222,7 +282,11 @@
   }
 
   .resume-cta {
-    background: linear-gradient(150deg, rgba(78, 227, 211, 0.12), rgba(255, 69, 142, 0.12));
+    background: linear-gradient(
+      150deg,
+      rgba(78, 227, 211, 0.12),
+      rgba(255, 69, 142, 0.12)
+    );
     padding: 84px 24px;
     text-align: center;
   }
@@ -333,13 +397,18 @@
     margin: 0.75rem 0;
     color: #cfd8f0;
   }
+  .job-stack {
+    margin: 0.75rem 0 0 0;
+    color: #cfd8f0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
   .job-section-title {
     font-weight: 600;
-    margin: 1rem 0 0.5rem 0;
     color: var(--arcade-muted);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
+    margin-right: 0.35em;
   }
   .job ul {
     margin: 0.5rem 0;
@@ -349,6 +418,13 @@
   .job li {
     margin-bottom: 0.5rem;
     line-height: 1.5;
+  }
+  .first_word {
+    font-weight: 700;
+    color: blueviolet;
+    font-family: monospace;
+    font-size: 1.2rem;
+    line-height: 0.9em;
   }
 
   .skills-list {
