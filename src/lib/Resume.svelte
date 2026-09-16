@@ -10,6 +10,20 @@
     };
   }
 
+  function getEasternTimeZoneLabel(): string {
+    const abbreviation =
+      new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        timeZoneName: "short",
+      })
+        .formatToParts(new Date())
+        .find((part) => part.type === "timeZoneName")?.value ?? "ET";
+    const offset = abbreviation === "EDT" ? "GMT-4" : "GMT-5";
+    return `${abbreviation} (${offset})`;
+  }
+
+  const easternTimeZoneLabel = getEasternTimeZoneLabel();
+
   function trackResumeDownload() {
     window.analytics?.trackDownload(
       "/Micah_Murray_Senior_Web_Engineer.pdf",
@@ -136,20 +150,21 @@
 
   const skills = [
     "Object Oriented PHP / Java",
-    "Javascript / TypeScript / Node",
+    "Javascript / TypeScript / Node.JS",
     "+some Python, Go, Rust",
     "SQL Server / MySQL / Postgres",
     "+some Redis, NoSQL, Supabase",
     "Bug resolution / Code review / Reverse engineering",
     "REST / API Development",
     "GIT Source Control / GitHub",
+    "Jenkins / Github Actions",
     "Problem Solving",
     "IIS / Apache / Nginx / Docker",
     "Open Stack / VPS / Cloud VM",
     "OpenAI / GPT / Vibe Code",
     "Zero Trust / oAuth2 / LDAP / SAML / OIDC / JWT",
     "/* Witty Code Comments */",
-    "/>$ Cmd Line Interfaces",
+    "/>$ CMD Line Interfaces",
     "Windows / Linux / MacOS",
     "Distributed Ledgers, Blockchain",
     "E2E Cryptology",
@@ -166,18 +181,6 @@
       If you need a developer who can plan, build, and adapt — for a team or for
       a single stubborn project — I'd like to hear about it.
     </p>
-    <div class="resume-cta-buttons">
-      <RetroButton
-        href="/Micah_Murray_Senior_Web_Engineer.pdf"
-        variant="white"
-        download
-        on:click={trackResumeDownload}>Download résumé (PDF) ↓</RetroButton
-      >
-      <RetroButton
-        href="mailto:micah@creativeadhocsolutions.com"
-        variant="primary">Email me</RetroButton
-      >
-    </div>
   </div>
 
   <div class="resume-container retro-panel">
@@ -208,7 +211,19 @@
         </p>
       </div>
       <div class="resume-header-right font-mono">
-        <p>Longmeadow, Massachusetts USA</p>
+        <p>
+          Longmeadow, Massachusetts <br />
+          Eastern {easternTimeZoneLabel}
+        </p>
+        <div class="resume-cta-buttons">
+          <RetroButton
+            href="/Micah_Murray_Senior_Web_Engineer.pdf"
+            variant="primary"
+            download
+            on:click={trackResumeDownload}>Download as PDF ↓</RetroButton
+          >
+        </div>
+
         <p>
           <a href="https://linkedin.com/in/micahmurray" target="_blank"
             >linkedin.com/in/micahmurray</a
@@ -308,6 +323,7 @@
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
+    margin: 20px 0;
   }
 
   .resume-container {
