@@ -58,7 +58,7 @@
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 100;
     background: rgba(8, 10, 20, 0.82);
     backdrop-filter: blur(8px);
     border-bottom: 4px solid var(--arcade-border);

@@ -185,6 +185,17 @@ img.pixel-art {
   box-shadow: inset 0 0 180px 40px rgba(0, 0, 0, 0.65);
 }
 
+/* Utility: exempt an element from the global scanline/vignette overlay above
+   by painting it in its own stacking context above both layers (z-index 60/61).
+   Only works if none of the element's ancestors already sit in a lower
+   stacking context of their own (e.g. .site-header is pinned at z-index 50,
+   so descendants of the header need the header's z-index raised too). */
+.no-scanlines {
+  position: relative;
+  isolation: isolate;
+  z-index: 62;
+}
+
 /* Pixel-shadow CTA button, used by RetroButton.svelte */
 .btn-pixel {
   display: inline-block;

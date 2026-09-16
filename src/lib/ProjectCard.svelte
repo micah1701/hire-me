@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-  import TechBadge from './TechBadge.svelte';
+  import { createEventDispatcher } from "svelte";
+  import TechBadge from "./TechBadge.svelte";
 
   export let projectId: string;
   export let image: string;
-  export let imgClass = '';
+  export let imgClass = "";
   export let title: string;
   export let subtitle: string;
   export let description: string;
@@ -13,7 +13,7 @@
   const dispatch = createEventDispatcher();
 
   function handleClick() {
-    dispatch('click');
+    dispatch("click");
   }
 </script>
 
@@ -23,7 +23,11 @@
   role="button"
   tabindex="0"
   on:click={handleClick}
-  on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleClick()}
+  on:keydown={(e) => (e.key === "Enter" || e.key === " ") && handleClick()}
+  on:mouseenter={(e) => e.currentTarget.classList.add("no-scanlines")}
+  on:mouseleave={(e) => e.currentTarget.classList.remove("no-scanlines")}
+  on:focus={(e) => e.currentTarget.classList.add("no-scanlines")}
+  on:blur={(e) => e.currentTarget.classList.remove("no-scanlines")}
 >
   <div class="project-thumb">
     <img src={image} class={imgClass} alt="Screenshot of {title}" />
