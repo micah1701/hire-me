@@ -123,6 +123,13 @@
     color: var(--arcade-teal);
   }
 
+  /* The header sits above the scanline overlay (z-index 60/61) so it stays
+     crisp, but that leaves the Résumé button reading brighter/more saturated
+     than everything else the overlay still dims. Tone it down to match. */
+  .nav-links :global(.btn-pixel) {
+    filter: saturate(0.7) brightness(0.7);
+  }
+
   @media (max-width: 480px) {
     .brand-wordmark {
       display: none;
