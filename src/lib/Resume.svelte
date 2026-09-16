@@ -171,7 +171,7 @@
         href="/Micah_Murray_Senior_Web_Engineer.pdf"
         variant="white"
         download
-        on:click={trackResumeDownload}>Download résumé ↓</RetroButton
+        on:click={trackResumeDownload}>Download résumé (PDF) ↓</RetroButton
       >
       <RetroButton
         href="mailto:micah@creativeadhocsolutions.com"

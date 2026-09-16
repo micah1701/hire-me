@@ -4,11 +4,19 @@
     <span class="footer-links">
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
-      <a href="https://github.com/micah1701" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/micahmurray" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="http://discord.gg/5yuRpXYAM" target="_blank" rel="noopener">Discord</a>
+      <a href="https://github.com/micah1701" target="_blank" rel="noopener"
+        >GitHub</a
+      >
+      <a
+        href="https://linkedin.com/in/micahmurray"
+        target="_blank"
+        rel="noopener">LinkedIn</a
+      >
+      <a href="http://discord.gg/5yuRpXYAM" target="_blank" rel="noopener"
+        >Discord</a
+      >
     </span>
-    <span class="footer-easter-egg">↑ ↑ ↓ ↓ ← → ← → B A — if you know, you know.</span>
+    <span class="footer-easter-egg">↑ ↑ ↓ ↓ ← → ← → B A </span>
   </div>
 </footer>
 

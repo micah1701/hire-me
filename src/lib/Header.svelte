@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RetroButton from './RetroButton.svelte';
+  import RetroButton from "./RetroButton.svelte";
 
   let menuOpen = false;
 
@@ -12,25 +12,31 @@
     menuOpen = false;
     const element = document.getElementById(id);
     if (element) {
-      const header = document.querySelector('.site-header') as HTMLElement;
+      const header = document.querySelector(".site-header") as HTMLElement;
       const headerHeight = header ? header.offsetHeight : 0;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({ top: elementPosition - headerHeight - 20, behavior: 'smooth' });
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - headerHeight - 20,
+        behavior: "smooth",
+      });
     }
   }
 </script>
 
 <header class="site-header">
   <div class="nav-container">
-    <a href="#top" class="brand" on:click={(e) => scrollToSection(e, 'top')}>
+    <a href="#top" class="brand" on:click={(e) => scrollToSection(e, "top")}>
       <img src="/logo.png" alt="Creative Ad-Hoc Solutions" class="brand-logo" />
-      <span class="brand-wordmark font-mono">Micah Murray<br />is Creative Ad-Hoc Solutions</span>
+      <span class="brand-wordmark font-mono"
+        >Micah Murray<br />is Creative Ad-Hoc Solutions</span
+      >
     </a>
 
     <div
       class="menu-toggle font-pixel"
       on:click={toggleMenu}
-      on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleMenu()}
+      on:keydown={(e) => (e.key === "Enter" || e.key === " ") && toggleMenu()}
       role="button"
       tabindex="0"
       aria-label="Toggle menu"
@@ -39,11 +45,11 @@
     </div>
 
     <nav class="nav-links font-mono" class:active={menuOpen}>
-      <a href="#work" on:click={(e) => scrollToSection(e, 'work')}>Work</a>
-      <a href="#hire" on:click={(e) => scrollToSection(e, 'hire')}>Hire</a>
-      <a href="#skills" on:click={(e) => scrollToSection(e, 'skills')}>Stack</a>
-      <a href="#about" on:click={(e) => scrollToSection(e, 'about')}>About</a>
-      <RetroButton href="#resume" variant="primary">Résumé ↓</RetroButton>
+      <a href="#work" on:click={(e) => scrollToSection(e, "work")}>Work</a>
+      <a href="#hire" on:click={(e) => scrollToSection(e, "hire")}>Hire</a>
+      <a href="#skills" on:click={(e) => scrollToSection(e, "skills")}>Stack</a>
+      <a href="#about" on:click={(e) => scrollToSection(e, "about")}>About</a>
+      <RetroButton href="#resume" variant="primary">Résumé</RetroButton>
     </nav>
   </div>
 </header>
@@ -76,13 +82,13 @@
   }
 
   .brand-logo {
-    height: 54px;
+    height: 100px;
     width: auto;
     display: block;
   }
 
   .brand-wordmark {
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--arcade-muted);
