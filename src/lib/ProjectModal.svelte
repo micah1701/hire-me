@@ -117,10 +117,11 @@
         "Open source and MIT‑licensed since 2017, Humblee is built for developers who'd rather write a controller than configure one — a clean, security‑first baseline with a CMS that doesn't get in the way, echoing the same philosophy behind Node1: architecture you can actually read.",
       ],
       images: [
-        "/img/humblee-admin-dashboard.svg",
-        "/img/humblee-page-editor.svg",
-        "/img/humblee-media-library.svg",
-        "/img/humblee-revision-history.svg",
+        "/img/CMS-homepage.png",
+        "/img/CMS-page-properties.png",
+        "/img/CMS-editor-seo.png",
+        "/img/CMS-media-manager.png",
+        "/img/CMS-blocks-tool.png",
       ],
       links: [
         {

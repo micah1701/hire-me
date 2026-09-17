@@ -54,14 +54,14 @@
       />
 
       <ProjectCard
-        projectId="hodl"
-        image="/img/hodl-homepage.png"
+        projectId="humblee"
+        image="/img/CMS-editor-seo.png"
         imgClass="img-contain"
-        title="ALGO Hodl"
-        subtitle="Trustless P2P trading"
-        description="Algorand smart-contract escrows executing peer-to-peer crypto trades. Encrypted wallet auth, live pricing, every action verifiable on-chain. No intermediaries."
-        techStack={["algorand", "svelte", "walletconnect"]}
-        on:click={() => openModal("hodl")}
+        title="Humblee"
+        subtitle="PHP framework & CMS"
+        description="A lightweight MVC framework with a full CMS built in — visual page editor, unlimited revision history, role-based access — so developers get a clean foundation without fighting a plugin ecosystem."
+        techStack={["php", "mysql", "svelte", "typescript"]}
+        on:click={() => openModal("humblee")}
       />
 
       <ProjectCard
@@ -75,14 +75,14 @@
       />
 
       <ProjectCard
-        projectId="humblee"
-        image="/img/humblee-page-editor.svg"
+        projectId="hodl"
+        image="/img/hodl-homepage.png"
         imgClass="img-contain"
-        title="Humblee"
-        subtitle="PHP framework & CMS"
-        description="A lightweight MVC framework with a full CMS built in — visual page editor, unlimited revision history, role-based access — so developers get a clean foundation without fighting a plugin ecosystem."
-        techStack={["php", "mysql", "svelte", "typescript"]}
-        on:click={() => openModal("humblee")}
+        title="ALGO Hodl"
+        subtitle="Trustless P2P trading"
+        description="Algorand smart-contract escrows executing peer-to-peer crypto trades. Encrypted wallet auth, live pricing, every action verifiable on-chain. No intermediaries."
+        techStack={["algorand", "svelte", "walletconnect"]}
+        on:click={() => openModal("hodl")}
       />
     </div>
   </div>
