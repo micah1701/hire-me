@@ -2,6 +2,7 @@
   import Header from './lib/Header.svelte';
   import Hero from './lib/Hero.svelte';
   import Hire from './lib/Hire.svelte';
+  import VideoSeries from './lib/VideoSeries.svelte';
   import Work from './lib/Work.svelte';
   import Skills from './lib/Skills.svelte';
   import About from './lib/About.svelte';
@@ -29,6 +30,7 @@
 <Header />
 <Hero />
 <Hire />
+<VideoSeries />
 <Work on:openModal={(e) => openModal(e.detail)} />
 <Skills />
 <About />
