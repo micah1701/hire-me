@@ -10,7 +10,7 @@
   }
 </script>
 
-<section id="work" class="work-section">
+<section id="projects" class="work-section">
   <div class="work-container">
     <SectionHeading
       kicker="Level select"

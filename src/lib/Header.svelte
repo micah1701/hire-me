@@ -68,7 +68,8 @@
     </div>
 
     <nav class="nav-links font-mono" class:active={menuOpen}>
-      <a href="#work" on:click={(e) => scrollToSection(e, "work")}>Work</a>
+      <a href="#projects" on:click={(e) => scrollToSection(e, "projects")}>Projects</a>
+      <a href="#my-work" on:click={(e) => scrollToSection(e, "my-work")}>My Work</a>
       <a href="#hire" on:click={(e) => scrollToSection(e, "hire")}>Hire</a>
       <a href="#skills" on:click={(e) => scrollToSection(e, "skills")}>Stack</a>
       <a href="#about" on:click={(e) => scrollToSection(e, "about")}>About</a>

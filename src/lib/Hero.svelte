@@ -215,8 +215,8 @@
       </h1>
       <p class="hero-lead">
         23 years of building things that work and fixing things that didn't. I
-        architect, build, and problem-solve for the web with a focus on clarity,
-        planning, and
+        architect, build, and problem-solve for the cloud with a focus on
+        clarity, planning, and
         <strong style="color: #ffffff;">creative ad-hoc solutions</strong>.
       </p>
       <p class="hero-sub">
@@ -225,7 +225,7 @@
         position.
       </p>
       <div class="hero-ctas">
-        <RetroButton href="#hire" variant="primary">Press Start</RetroButton>
+        <RetroButton href="#my-work" variant="primary">Press Start</RetroButton>
         <RetroButton href="#resume" variant="outline">Select Resume</RetroButton
         >
       </div>

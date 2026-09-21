@@ -21,9 +21,14 @@
   }
 </script>
 
-<section id="videos" class="videos-section">
+<section id="my-work" class="videos-section">
   <div class="videos-container">
     <SectionHeading kicker="Plain english" title="What would you say you actually do?" color="blue" />
+    <p class="videos-intro">
+      I'll admit it — I can ramble on in tech jargon and lose people fast. So here's the
+      plain-English version instead: short videos, each under a minute, that walk through a
+      real problem and how I solved it, minus the boring technical explanation.
+    </p>
 
     <div class="carousel">
       <button class="carousel-nav prev font-pixel" on:click={() => scrollByCard(-1)} aria-label="Previous video">&#10094;</button>
@@ -51,6 +56,13 @@
     max-width: 1180px;
     margin: 0 auto;
     padding: 78px 24px;
+  }
+  .videos-intro {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--arcade-muted);
+    max-width: 60ch;
+    margin: -24px 0 44px;
   }
   .carousel {
     display: flex;
