@@ -64,6 +64,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Kept on html, not body: overflow-x on body propagates to the viewport
+     scroller and breaks position: sticky (it stops tracking the viewport
+     and scrolls away with the page instead). */
+  overflow-x: hidden;
 }
 
 body {
@@ -76,7 +80,6 @@ body {
   color: var(--arcade-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 a {

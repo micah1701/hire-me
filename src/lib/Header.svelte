@@ -1,11 +1,34 @@
 <script lang="ts">
+  import { onMount, onDestroy } from "svelte";
   import RetroButton from "./RetroButton.svelte";
 
   let menuOpen = false;
+  let scrolled = false;
+  let scrollTicking = false;
 
   function toggleMenu() {
     menuOpen = !menuOpen;
   }
+
+  function handleScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(() => {
+      scrolled = window.scrollY > 24;
+      scrollTicking = false;
+    });
+  }
+
+  onMount(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+  });
+
+  onDestroy(() => {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  });
 
   function scrollToSection(e: Event, id: string) {
     e.preventDefault();
@@ -24,7 +47,7 @@
   }
 </script>
 
-<header class="site-header">
+<header class="site-header" class:is-scrolled={scrolled}>
   <div class="nav-container">
     <a href="#top" class="brand" on:click={(e) => scrollToSection(e, "top")}>
       <img src="/logo.png" alt="Creative Ad-Hoc Solutions" class="brand-logo" />
@@ -59,9 +82,21 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(8, 10, 20, 0.82);
-    backdrop-filter: blur(8px);
+    background: var(--arcade-bg);
     border-bottom: 4px solid var(--arcade-border);
+  }
+
+  /* Solid header, but a translucent gradient tail hints that content is
+     scrolling underneath it rather than just stopping dead at the edge. */
+  .site-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 28px;
+    background: linear-gradient(to bottom, rgba(8, 10, 20, 0.45), transparent);
+    pointer-events: none;
   }
 
   .nav-container {
@@ -72,6 +107,12 @@
     align-items: center;
     gap: 24px;
     flex-wrap: wrap;
+    transition: padding 0.25s ease;
+  }
+
+  .site-header.is-scrolled .nav-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .brand {
@@ -85,6 +126,11 @@
     height: 100px;
     width: auto;
     display: block;
+    transition: height 0.25s ease;
+  }
+
+  .site-header.is-scrolled .brand-logo {
+    height: 52px;
   }
 
   .brand-wordmark {
@@ -128,6 +174,16 @@
      than everything else the overlay still dims. Tone it down to match. */
   .nav-links :global(.btn-pixel) {
     filter: saturate(0.7) brightness(0.7);
+    transition:
+      background 0.15s ease,
+      box-shadow 0.25s ease,
+      transform 0.1s ease,
+      padding 0.25s ease;
+  }
+
+  .site-header.is-scrolled .nav-links :global(.btn-pixel) {
+    padding: 10px 16px;
+    box-shadow: 4px 4px 0 #17204a;
   }
 
   @media (max-width: 480px) {
