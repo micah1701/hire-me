@@ -20,7 +20,7 @@
     <div class="work-grid">
       <ProjectCard
         projectId="verify"
-        image="/img/ad-hoc-verify-landingpage.png"
+        image="/img/ad-hoc-verify-promocard.png"
         imgClass="img-contain"
         title="Ad-Hoc Verify"
         subtitle="Verification-as-a-Service"
