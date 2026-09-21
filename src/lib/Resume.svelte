@@ -357,11 +357,6 @@
     line-height: 1.5;
     color: #cfd8f0;
   }
-  .resume-method {
-    margin: 1rem 0 0 0;
-    color: var(--arcade-teal);
-    font-size: 0.85rem;
-  }
   .resume-header-right {
     text-align: right;
     font-size: 0.9rem;
