@@ -24,8 +24,13 @@
     </div>
     <div class="about-stats">
       <StatCard number="23 yrs" color="teal" description="Shipping for the web professionally — agencies, non-profits, banks, and regulated manufacturing." />
-      <StatCard number="161k" color="pink" description="Members served by the online enrollment system I built for the ARRL, replacing a paper process." />
-      <StatCard number="$500k" color="blue" description="Budget of the regional bank platform rebuild I led as team lead at Cronin." />
+      <div class="about-photo">
+        <img
+          src="/img/IT-consultant-headshot.png"
+          alt="Micah Murray"
+          class="about-photo-img"
+        />
+      </div>
     </div>
   </div>
 </section>
@@ -57,5 +62,15 @@
   .about-stats {
     display: grid;
     gap: 16px;
+  }
+  .about-photo {
+    border: 4px solid var(--arcade-border);
+    background: rgba(9, 12, 26, 0.6);
+    padding: 12px;
+  }
+  .about-photo-img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 </style>
