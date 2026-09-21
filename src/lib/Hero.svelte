@@ -1,6 +1,165 @@
 <script lang="ts">
+  import { onMount, onDestroy } from "svelte";
   import RetroButton from "./RetroButton.svelte";
   import Icon from "./Icon.svelte";
+
+  const HERO_WORDS = [
+    "PHP",
+    "JavaScript",
+    "TypeScript",
+    "SQL Server",
+    "API",
+    "CI/CD",
+    "Blockchain",
+    "GIT",
+    "OpenAI",
+    "Linux",
+    "Node.JS",
+    "Coding",
+    "Web",
+    "Software",
+    "Internet",
+    "SSL",
+    "DNS",
+    "Cloudflare",
+    "IAM",
+    "Encrypting",
+    "Docker",
+    "MySQL",
+  ];
+  const GLITCH_CHARS = "!<>-_\\/[]{}=+*^?#01";
+  const HOLD_MS = 1800;
+  const SCRAMBLE_FRAME_MS = 35;
+  const SCRAMBLE_FRAMES = 7;
+
+  function shuffle(list: string[]): string[] {
+    const copy = [...list];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  let queue = shuffle(HERO_WORDS);
+  let displayWord = queue[0];
+  let isScrambling = false;
+  let holdTimer: ReturnType<typeof setInterval>;
+  let scrambleTimer: ReturnType<typeof setInterval>;
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  let reduceMotion = false;
+
+  // Each of the three heading lines gets fit to its own column width by
+  // measuring actual rendered text width (the pixel font is ~1em/char,
+  // wider than typical fonts) rather than guessing from character count.
+  let line1El: HTMLElement;
+  let line3El: HTMLElement;
+  let wordLineEl: HTMLElement;
+  let scaleFixed1 = 1;
+  let scaleFixed3 = 1;
+  let wordScale = 1;
+  let measureCtx: CanvasRenderingContext2D | null = null;
+
+  function measureTextWidth(text: string, font: string): number {
+    if (!measureCtx) {
+      measureCtx = document.createElement("canvas").getContext("2d");
+    }
+    if (!measureCtx) return 0;
+    measureCtx.font = font;
+    return measureCtx.measureText(text).width;
+  }
+
+  function fitScale(el: HTMLElement | undefined, text: string): number {
+    if (!el) return 1;
+    const cs = getComputedStyle(el);
+    const font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    const needed = measureTextWidth(text, font);
+    const available = el.clientWidth;
+    if (!needed || !available || needed <= available) return 1;
+    return Math.max(0.55, available / needed);
+  }
+
+  function refitWord() {
+    wordScale = fitScale(wordLineEl, displayWord);
+  }
+
+  function refitFixedLines() {
+    scaleFixed1 = fitScale(line1El, "Hire me for");
+    scaleFixed3 = fitScale(line3El, "stuff.");
+  }
+
+  function nextWord() {
+    if (queue.length <= 1) queue = shuffle(HERO_WORDS);
+    const upcoming = queue.shift() as string;
+    if (upcoming === displayWord && queue.length) {
+      queue.push(upcoming);
+      return nextWord();
+    }
+    return upcoming;
+  }
+
+  function scrambleTo(target: string) {
+    if (reduceMotion) {
+      displayWord = target;
+      refitWord();
+      return;
+    }
+    isScrambling = true;
+    let frame = 0;
+    clearInterval(scrambleTimer);
+    scrambleTimer = setInterval(() => {
+      frame++;
+      const revealCount = Math.round((frame / SCRAMBLE_FRAMES) * target.length);
+      let next = "";
+      for (let i = 0; i < target.length; i++) {
+        if (i < revealCount || target[i] === " ") {
+          next += target[i];
+        } else {
+          next += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+        }
+      }
+      displayWord = next;
+      if (frame === 1) refitWord();
+      if (frame >= SCRAMBLE_FRAMES) {
+        clearInterval(scrambleTimer);
+        displayWord = target;
+        isScrambling = false;
+      }
+    }, SCRAMBLE_FRAME_MS);
+  }
+
+  function handleResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      refitFixedLines();
+      refitWord();
+    }, 120);
+  }
+
+  onMount(() => {
+    reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const ready = (document as any).fonts?.ready ?? Promise.resolve();
+    ready.then(() => {
+      refitFixedLines();
+      refitWord();
+    });
+
+    window.addEventListener("resize", handleResize);
+    if (reduceMotion) return;
+    holdTimer = setInterval(() => scrambleTo(nextWord()), HOLD_MS);
+  });
+
+  onDestroy(() => {
+    clearInterval(holdTimer);
+    clearInterval(scrambleTimer);
+    clearTimeout(resizeTimer);
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", handleResize);
+    }
+  });
 </script>
 
 <section id="top" class="hero-section">
@@ -10,10 +169,31 @@
         Player 1 · Available now<span class="blink-cursor">_</span>
       </p>
       <h1 class="font-pixel gradient-text hero-title">
-        Hire me for web stuff.
+        <span aria-hidden="true">
+          <span class="hero-line" bind:this={line1El}
+            ><span class="hero-line-text" style="font-size: {scaleFixed1}em"
+              >Hire me for</span
+            ></span
+          >
+          <span class="hero-line" bind:this={wordLineEl}
+            ><span
+              class="hero-word"
+              class:is-scrambling={isScrambling}
+              style="font-size: {wordScale}em">{displayWord}</span
+            ></span
+          >
+          <span class="hero-line" bind:this={line3El}
+            ><span class="hero-line-text" style="font-size: {scaleFixed3}em"
+              >stuff.</span
+            ></span
+          >
+        </span>
+        <span class="sr-only"
+          >Hire me for web, software, and full-stack development stuff.</span
+        >
       </h1>
       <p class="hero-lead">
-        23 years of building things that work — and fixing things that didn't. I
+        23 years of building things that work and fixing things that didn't. I
         architect, build, and problem-solve for the web with a focus on clarity,
         planning, and
         <strong style="color: #ffffff;">creative ad-hoc solutions</strong>.
@@ -71,11 +251,43 @@
   }
 
   .hero-title {
-    font-size: clamp(30px, 5.4vw, 62px);
+    font-size: clamp(30px, 5.4vw, 58px);
     line-height: 1.28;
     margin: 0 0 28px;
     letter-spacing: -0.01em;
-    text-wrap: balance;
+  }
+
+  .hero-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero-line-text {
+    display: inline-block;
+  }
+
+  .hero-word {
+    display: inline-block;
+    white-space: nowrap;
+    transition: font-size 0.15s ease-out;
+  }
+
+  .hero-word.is-scrambling {
+    text-shadow:
+      -2px 0 var(--arcade-pink),
+      2px 0 var(--arcade-blue);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .hero-lead {
