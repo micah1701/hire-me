@@ -1,14 +1,8 @@
 <script lang="ts">
   import RetroButton from "./RetroButton.svelte";
+  import JobEntry from "./JobEntry.svelte";
 
-  function splitFirstWord(text: string) {
-    const spaceIndex = text.indexOf(" ");
-    if (spaceIndex === -1) return { firstWord: text, rest: "" };
-    return {
-      firstWord: text.slice(0, spaceIndex),
-      rest: text.slice(spaceIndex),
-    };
-  }
+  let expanded = false;
 
   function getEasternTimeZoneLabel(): string {
     const abbreviation =
@@ -217,35 +211,28 @@
       <div class="resume-main">
         <h2 class="font-pixel resume-h2">Experience</h2>
 
-        {#each jobs as job}
-          <div class="job">
-            <h3 class="job-title">
-              {job.company}, <span class="job-location">{job.location}</span> —
-              <span class="job-role">{job.title}</span>
-            </h3>
-            <p class="job-period font-mono">{job.period}</p>
+        <JobEntry job={jobs[0]} />
 
-            {#if job.description}
-              <p class="job-description">{job.description}</p>
-            {/if}
+        <div class="jobs-more" class:is-expanded={expanded}>
+          {#each jobs.slice(1) as job}
+            <JobEntry {job} />
+          {/each}
+          {#if !expanded}
+            <div class="jobs-fade" aria-hidden="true"></div>
+          {/if}
+        </div>
 
-            {#if job.details}
-              <ul>
-                {#each job.details as detail}
-                  {@const { firstWord, rest } = splitFirstWord(detail)}
-                  <li><span class="first_word">{firstWord}</span>{rest}</li>
-                {/each}
-              </ul>
-            {/if}
-
-            {#if job.stack}
-              <p class="job-stack font-mono">
-                <span class="job-section-title">Technologies:</span>
-                {job.stack.join(", ")}
-              </p>
-            {/if}
+        {#if !expanded}
+          <div class="jobs-view-more">
+            <button
+              type="button"
+              class="btn-pixel is-outline"
+              on:click={() => (expanded = true)}
+            >
+              View More Experiences ↓
+            </button>
           </div>
-        {/each}
+        {/if}
       </div>
     </div>
   </div>
@@ -340,62 +327,32 @@
     font-size: 15px;
   }
 
-  .job {
-    margin-bottom: 2rem;
+  .jobs-more {
+    position: relative;
+    overflow: hidden;
+    max-height: 100000px;
+    transition: max-height 0.5s ease;
   }
-  .job-title {
-    margin: 0 0 0.25rem 0;
-    color: var(--arcade-text);
-    font-size: 1.05rem;
+  .jobs-more:not(.is-expanded) {
+    max-height: 150px;
   }
-  .job-location {
-    font-weight: normal;
-    font-size: 0.9rem;
-    color: var(--arcade-muted);
+  .jobs-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 110px;
+    background: linear-gradient(
+      to bottom,
+      rgba(9, 12, 26, 0),
+      rgba(9, 12, 26, 0.97)
+    );
+    pointer-events: none;
   }
-  .job-role {
-    font-style: italic;
-    font-weight: normal;
-    font-size: 0.9rem;
-    color: var(--arcade-muted);
-  }
-  .job-period {
-    color: var(--arcade-teal);
-    font-size: 0.8rem;
-    margin: 0.25rem 0 0.75rem 0;
-  }
-  .job-description {
-    margin: 0.75rem 0;
-    color: #cfd8f0;
-  }
-  .job-stack {
-    margin: 0.75rem 0 0 0;
-    color: #cfd8f0;
-    font-size: 0.8rem;
-    line-height: 1.5;
-  }
-  .job-section-title {
-    font-weight: 600;
-    color: var(--arcade-muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-right: 0.35em;
-  }
-  .job ul {
-    margin: 0.5rem 0;
-    padding-left: 1.25rem;
-    color: #cfd8f0;
-  }
-  .job li {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-  }
-  .first_word {
-    font-weight: 700;
-    color: blueviolet;
-    font-family: monospace;
-    font-size: 1.2rem;
-    line-height: 0.9em;
+  .jobs-view-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 
   @media (max-width: 900px) {
