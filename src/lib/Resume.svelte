@@ -147,28 +147,6 @@
         "Began professional software development career building ColdFusion and Flash-based sales reporting tools against a MySQL database for a national sales team, supporting a home-built SFA platform predating widely-available CRM tools. (ColdFusion, Flash, MySQL, HTML)",
     },
   ];
-
-  const skills = [
-    "Object Oriented PHP / Java",
-    "Javascript / TypeScript / Node.JS",
-    "+some Python, Go, Rust",
-    "SQL Server / MySQL / Postgres",
-    "+some Redis, NoSQL, Supabase",
-    "Bug resolution / Code review / Reverse engineering",
-    "REST / API Development",
-    "GIT Source Control / GitHub",
-    "Jenkins / Github Actions",
-    "Problem Solving",
-    "IIS / Apache / Nginx / Docker",
-    "Open Stack / VPS / Cloud VM",
-    "OpenAI / GPT / Vibe Code",
-    "Zero Trust / oAuth2 / LDAP / SAML / OIDC / JWT",
-    "/* Witty Code Comments */",
-    "/>$ CMD Line Interfaces",
-    "Windows / Linux / MacOS",
-    "Distributed Ledgers, Blockchain",
-    "E2E Cryptology",
-  ];
 </script>
 
 <section id="resume" class="resume-section">
@@ -269,24 +247,6 @@
           </div>
         {/each}
       </div>
-
-      <div class="resume-sidebar">
-        <h2 class="font-pixel resume-h2">Skills</h2>
-        <ul class="skills-list">
-          {#each skills as skill}
-            <li>{skill}</li>
-          {/each}
-        </ul>
-
-        <h2 class="font-pixel resume-h2">Education</h2>
-        <div class="education font-mono">
-          <p>
-            <strong>Eastern Connecticut State University</strong><br
-            />Willimantic CT
-          </p>
-          <p><strong>Eastern College</strong><br />St Davids PA</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -368,7 +328,7 @@
 
   .resume-body {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
@@ -438,35 +398,9 @@
     line-height: 0.9em;
   }
 
-  .skills-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem;
-  }
-  .skills-list li {
-    padding: 0.6rem 0;
-    border-bottom: 1px solid var(--arcade-border);
-    font-size: 0.85rem;
-    color: #cfd8f0;
-  }
-
-  .education {
-    font-size: 0.85rem;
-    color: #cfd8f0;
-  }
-  .education p {
-    margin: 1rem 0;
-  }
-
   @media (max-width: 900px) {
     .resume-header-right {
       text-align: left;
-    }
-    .resume-body {
-      grid-template-columns: 1fr;
-    }
-    .resume-sidebar {
-      order: 2;
     }
   }
 </style>
