@@ -50,7 +50,7 @@
 
 <style>
   .video-card {
-    width: 340px;
+    width: 100%;
     cursor: pointer;
     transition: border-color 0.15s ease;
   }

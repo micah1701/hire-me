@@ -1,6 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import ProjectCard from "./ProjectCard.svelte";
+  import Carousel from "./Carousel.svelte";
   import SectionHeading from "./SectionHeading.svelte";
 
   const dispatch = createEventDispatcher();
@@ -17,7 +18,7 @@
       title="Recent projects"
       color="teal"
     />
-    <div class="work-grid">
+    <Carousel label="Recent projects">
       <ProjectCard
         projectId="verify"
         image="/img/ad-hoc-verify-promocard.png"
@@ -84,7 +85,7 @@
         techStack={["algorand", "svelte", "walletconnect"]}
         on:click={() => openModal("hodl")}
       />
-    </div>
+    </Carousel>
   </div>
 </section>
 
@@ -96,10 +97,5 @@
     max-width: 1180px;
     margin: 0 auto;
     padding: 78px 24px;
-  }
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
   }
 </style>

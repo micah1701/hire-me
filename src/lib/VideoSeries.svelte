@@ -2,6 +2,7 @@
   import SectionHeading from './SectionHeading.svelte';
   import RetroButton from './RetroButton.svelte';
   import VideoCard from './VideoCard.svelte';
+  import Carousel from './Carousel.svelte';
 
   const playlistUrl = 'https://www.youtube.com/playlist?list=PLcxdr-GWUN0s';
 
@@ -11,14 +12,6 @@
     { id: 'NT7u3WP1LJ8', title: "The Sales Tool That Couldn't See What Customers Actually Bought" },
     { id: 'jRCMtzV7L1s', title: 'Why a Pharma Factory Line Traded Paperwork for a Barcode Scanner' }
   ];
-
-  let track: HTMLDivElement;
-
-  function scrollByCard(direction: 1 | -1) {
-    const card = track.querySelector('.video-card') as HTMLElement | null;
-    const amount = (card ? card.offsetWidth : 340) + 24;
-    track.scrollBy({ left: direction * amount, behavior: 'smooth' });
-  }
 </script>
 
 <section id="my-work" class="videos-section">
@@ -30,15 +23,11 @@
       real problem and how I solved it, minus the boring technical explanation.
     </p>
 
-    <div class="carousel">
-      <button class="carousel-nav prev font-pixel" on:click={() => scrollByCard(-1)} aria-label="Previous video">&#10094;</button>
-      <div class="carousel-track" bind:this={track}>
-        {#each videos as video (video.id)}
-          <VideoCard id={video.id} title={video.title} />
-        {/each}
-      </div>
-      <button class="carousel-nav next font-pixel" on:click={() => scrollByCard(1)} aria-label="Next video">&#10095;</button>
-    </div>
+    <Carousel label="Plain-English videos" accent="var(--arcade-blue)">
+      {#each videos as video (video.id)}
+        <VideoCard id={video.id} title={video.title} />
+      {/each}
+    </Carousel>
 
     <div class="videos-cta">
       <RetroButton href={playlistUrl} variant="outline" target="_blank" rel="noopener">
@@ -64,44 +53,8 @@
     max-width: 60ch;
     margin: -24px 0 44px;
   }
-  .carousel {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .carousel-track {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding-bottom: 8px;
-  }
-  .carousel-track :global(.video-card) {
-    scroll-snap-align: start;
-    flex: 0 0 auto;
-  }
-  .carousel-nav {
-    flex: 0 0 auto;
-    background: rgba(8, 10, 20, 0.7);
-    color: var(--arcade-teal);
-    border: 2px solid var(--arcade-border);
-    padding: 0.7rem 0.9rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-  }
-  .carousel-nav:hover {
-    background: var(--arcade-teal);
-    color: #05060f;
-  }
   .videos-cta {
     margin-top: 40px;
     text-align: center;
-  }
-
-  @media (max-width: 640px) {
-    .carousel-nav {
-      display: none;
-    }
   }
 </style>
