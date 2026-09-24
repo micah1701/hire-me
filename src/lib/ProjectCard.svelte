@@ -43,11 +43,15 @@
         {/each}
       </div>
     {/if}
+    <!-- Visual cue only: the whole card is the button, so this can't be a nested <button> -->
+    <span class="project-more font-pixel" aria-hidden="true">Learn more <span class="project-more-arrow">&rarr;</span></span>
   </div>
 </div>
 
 <style>
   .project-card {
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
     transition: border-color 0.15s ease;
   }
@@ -71,6 +75,9 @@
     object-fit: contain;
   }
   .project-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 26px;
   }
   .project-title {
@@ -94,5 +101,31 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    margin-bottom: 22px;
+  }
+  /* Pinned to the bottom so the buttons line up across cards of different lengths */
+  .project-more {
+    align-self: flex-start;
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 3px solid var(--arcade-border);
+    color: var(--arcade-text);
+    font-size: 11px;
+    line-height: 1.5;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .project-more-arrow {
+    transition: transform 0.15s ease;
+  }
+  .project-card:hover .project-more,
+  .project-card:focus-visible .project-more {
+    border-color: var(--arcade-teal);
+    color: var(--arcade-teal);
+  }
+  .project-card:hover .project-more-arrow {
+    transform: translateX(4px);
   }
 </style>

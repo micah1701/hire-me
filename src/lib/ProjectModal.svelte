@@ -155,11 +155,12 @@
   <div class="project-modal-content retro-panel">
     <button
       type="button"
-      class="modal-close-btn"
+      class="modal-close-btn font-pixel"
       on:click={handleClose}
-      aria-label="Close">&times;</button
+      aria-label="Close"
     >
-
+      Close <span class="modal-close-x" aria-hidden="true">&times;</span>
+    </button>
     <h2 class="font-pixel modal-title">{project.title}</h2>
     {#if project.tagline}
       <p class="modal-tagline font-mono">{project.tagline}</p>
@@ -189,7 +190,8 @@
   .project-modal {
     display: block;
     position: fixed;
-    z-index: 99;
+    /* Above the sticky site header (z-index 100) so the close button is never hidden behind it */
+    z-index: 110;
     left: 0;
     top: 0;
     width: 100%;
@@ -208,22 +210,37 @@
     box-shadow: 10px 10px 0 rgba(78, 227, 211, 0.18);
   }
 
+  /* Sticky so it stays reachable while scrolling a long modal on small screens */
   .modal-close-btn {
-    position: absolute;
+    position: sticky;
     top: 12px;
-    right: 20px;
-    font-size: 1.8rem;
-    color: var(--arcade-muted);
-    cursor: pointer;
-    background: none;
-    border: none;
+    z-index: 1;
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 -0.75rem 0.75rem 1rem;
+    padding: 8px 12px;
+    font-size: 11px;
     line-height: 1;
-    padding: 0;
+    color: var(--arcade-muted);
+    background: rgba(10, 14, 30, 0.92);
+    border: 3px solid var(--arcade-border);
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease;
   }
-  .modal-close-btn:hover {
+  .modal-close-x {
+    font-size: 12x;
+    line-height: 0.8;
+    color: var(--arcade-pink);
+  }
+  .modal-close-btn:hover,
+  .modal-close-btn:focus-visible {
+    border-color: var(--arcade-teal);
     color: var(--arcade-teal);
   }
-
   .modal-title {
     font-size: 18px;
     color: #ffffff;
@@ -243,8 +260,11 @@
 
   @media (max-width: 600px) {
     .project-modal-content {
-      margin: 2rem 1rem;
+      margin: 1rem;
       padding: 1rem;
+    }
+    .modal-close-btn {
+      margin-right: -0.25rem;
     }
   }
 </style>
